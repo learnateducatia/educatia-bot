@@ -54,32 +54,18 @@ def set_session(phone, data):
 # =============================================
 
 def notify_maam_new_contact(user_phone):
-    """Sends a WhatsApp and Email notification to Ma'am about a new contact."""
+    """Sends a WhatsApp notification to Ma'am about a new contact."""
     msg = f"🔔 *New Contact Alert!*\n\nA new user has just contacted the Educatia Bot.\nUser's Phone Number: *+{user_phone}*"
     
-    # 1. Send WhatsApp Notification
-    send_text(MAAM_PHONE_NUMBER, msg)
-    
-    # 2. Send Email Notification
-    if SMTP_PASSWORD:
-        try:
-            email_msg = MIMEMultipart()
-            email_msg["From"] = SMTP_EMAIL
-            email_msg["To"] = MAAM_EMAIL
-            email_msg["Subject"] = "New Educatia Bot Contact"
-            
-            body = f"Hello,\n\nA new user has just contacted the Educatia Bot.\n\nUser's Phone Number: +{user_phone}\n\nBest,\nEducatia Bot"
-            email_msg.attach(MIMEText(body, "plain"))
-            
-            # Connect to Gmail SMTP server
-            server = smtplib.SMTP("smtp.gmail.com", 587)
-            server.starttls()
-            server.login(SMTP_EMAIL, SMTP_PASSWORD)
-            server.send_message(email_msg)
-            server.quit()
-            logger.info(f"Notification email sent to {MAAM_EMAIL} for user {user_phone}")
-        except Exception as e:
-            logger.error(f"Failed to send notification email: {e}")
+    # Send WhatsApp Notification
+    try:
+        send_text(MAAM_PHONE_NUMBER, msg)
+        logger.info(f"WhatsApp notification sent to {MAAM_PHONE_NUMBER} for new user {user_phone}")
+    except BaseException as e:
+        logger.error(f"Failed to send WhatsApp notification: {e}")
+
+    # Note: Email notification via smtplib is disabled because Railway blocks outbound SMTP
+    # (ports 25, 465, 587) which causes the process to crash with SystemExit.
 
 # =============================================
 # WHATSAPP API — SEND FUNCTIONS
