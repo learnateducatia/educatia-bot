@@ -3,6 +3,9 @@ from flask import Flask, request
 import requests
 import json
 import logging
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
@@ -16,19 +19,26 @@ logger = logging.getLogger(__name__)
 ACCESS_TOKEN = os.environ.get("WHATSAPP_ACCESS_TOKEN", "")
 PHONE_NUMBER_ID = os.environ.get("WHATSAPP_PHONE_NUMBER_ID", "")
 VERIFY_TOKEN = os.environ.get("WHATSAPP_VERIFY_TOKEN", "educatia123")
+SMTP_EMAIL = os.environ.get("SMTP_EMAIL", "learnateducatiadso@gmail.com")
+SMTP_PASSWORD = os.environ.get("SMTP_APP_PASSWORD", "")
+MAAM_PHONE_NUMBER = "971504605940"
+MAAM_EMAIL = "info@learnateducatia.com"
 
 if not ACCESS_TOKEN:
     logger.warning("⚠️  WHATSAPP_ACCESS_TOKEN not set! Bot won't be able to send messages.")
 if not PHONE_NUMBER_ID:
     logger.warning("⚠️  WHATSAPP_PHONE_NUMBER_ID not set! Bot won't be able to send messages.")
+if not SMTP_PASSWORD:
+    logger.warning("⚠️  SMTP_APP_PASSWORD not set! Bot won't be able to send notification emails.")
 
 API_URL = f"https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages"
 
 # =============================================
-# SESSION MANAGEMENT
+# SESSION & NOTIFICATION TRACKING
 # =============================================
 
 user_sessions = {}
+notified_users = set()
 
 
 def get_session(phone):
@@ -38,6 +48,38 @@ def get_session(phone):
 def set_session(phone, data):
     user_sessions[phone] = data
 
+
+# =============================================
+# NOTIFICATION FUNCTIONS
+# =============================================
+
+def notify_maam_new_contact(user_phone):
+    """Sends a WhatsApp and Email notification to Ma'am about a new contact."""
+    msg = f"🔔 *New Contact Alert!*\n\nA new user has just contacted the Educatia Bot.\nUser's Phone Number: *+{user_phone}*"
+    
+    # 1. Send WhatsApp Notification
+    send_text(MAAM_PHONE_NUMBER, msg)
+    
+    # 2. Send Email Notification
+    if SMTP_PASSWORD:
+        try:
+            email_msg = MIMEMultipart()
+            email_msg["From"] = SMTP_EMAIL
+            email_msg["To"] = MAAM_EMAIL
+            email_msg["Subject"] = "New Educatia Bot Contact"
+            
+            body = f"Hello,\n\nA new user has just contacted the Educatia Bot.\n\nUser's Phone Number: +{user_phone}\n\nBest,\nEducatia Bot"
+            email_msg.attach(MIMEText(body, "plain"))
+            
+            # Connect to Gmail SMTP server
+            server = smtplib.SMTP("smtp.gmail.com", 587)
+            server.starttls()
+            server.login(SMTP_EMAIL, SMTP_PASSWORD)
+            server.send_message(email_msg)
+            server.quit()
+            logger.info(f"Notification email sent to {MAAM_EMAIL} for user {user_phone}")
+        except Exception as e:
+            logger.error(f"Failed to send notification email: {e}")
 
 # =============================================
 # WHATSAPP API — SEND FUNCTIONS
@@ -1284,6 +1326,11 @@ def webhook():
         if "messages" in value:
             message = value["messages"][0]
             from_number = message["from"]
+
+            # Notify Ma'am if this is a first-time user
+            if from_number not in notified_users and from_number != MAAM_PHONE_NUMBER:
+                notified_users.add(from_number)
+                notify_maam_new_contact(from_number)
 
             if message["type"] == "text":
                 msg_text = message["text"]["body"]
