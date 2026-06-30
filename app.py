@@ -592,7 +592,7 @@ def show_academic_courses(to, branch):
     numbered = "\n".join(
         f"{i+1}. {c['title']}" for i, c in enumerate(courses)
     )
-    sections = [{"title": f"Courses at {bname}", "rows": courses}]
+    sections = [{"title": "Available Courses", "rows": courses}]
     send_list(
         to,
         body=(
@@ -658,7 +658,7 @@ def show_adult_courses(to, branch):
     numbered = "\n".join(
         f"{i+1}. {c['title']}" for i, c in enumerate(courses)
     )
-    sections = [{"title": f"Courses at {bname}", "rows": courses}]
+    sections = [{"title": "Available Courses", "rows": courses}]
     send_list(
         to,
         body=(
@@ -922,9 +922,6 @@ def show_contact_team(to):
         "👩‍💼 *Connect with Our Team*\n\n"
         "We're here to help! You can reach us at:\n\n"
         "📞 Call / WhatsApp: *+971 50 460 5940*\n\n"
-        "⏰ *Available:*\n"
-        "• Monday – Thursday: 10:00 AM – 1:00 PM\n"
-        "• Friday: 10:00 AM – 12:00 PM\n\n"
         "A staff member will get back to you shortly! 😊\n\n"
         "Reply *menu* to go back 🔙"
     )
@@ -1199,13 +1196,7 @@ def handle_message(from_number, msg_text=None, interactive_id=None):
         return
 
     # ── Fallback ──
-    send_text(
-        from_number,
-        "Sorry, I didn't quite understand that 🤔\n\n"
-        "Reply *menu* to see all options, or\n"
-        "Reply *8* to speak to our team directly!\n\n"
-        "📞 Or call: *+971 50 460 5940*",
-    )
+    show_main_menu(from_number)
 
 
 # =============================================
