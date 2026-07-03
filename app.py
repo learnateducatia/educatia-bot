@@ -907,7 +907,7 @@ def show_contact_team(to):
     text = (
         "👩‍💼 *Connect with Our Team*\n\n"
         "We're here to help! You can reach us at:\n\n"
-        "📞 Call / WhatsApp: *+971 50 460 5940*\n\n"
+        "📞 Call / WhatsApp: *+971 50 460 5940 0*\n\n"
         "A staff member will get back to you shortly! 😊\n\n"
         "Reply *menu* to go back 🔙"
     )
