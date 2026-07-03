@@ -292,7 +292,7 @@ def show_summer_camp(to, branch):
     if branch == "ic":
         text = (
             "🌟 *Educatia's Summer Camp 2026 — International City* 🌟\n\n"
-            "📅 Duration: July 6th – August 28th, 2026\n"
+            "📅 Duratio: July 6th – August 28th, 2026\n"
             "👧🧒 Age Group: 5 – 16 Years\n"
             "🗓 Days: Monday to Friday\n"
             "🏫 Mode: Physical Camp\n\n"
