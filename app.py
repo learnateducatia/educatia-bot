@@ -1433,11 +1433,13 @@ def handle_number_input(from_number, num, session):
                 show_stem_age_selection(from_number, b)
             return True
 
-    # ── Branch selection (4 branches: Academic/Adult) ──
-    if step == "select_branch" and category in ("academic", "adult"):
+    # ── Branch selection (4 branches: Academic/Adult/new categories) ──
+    if step == "select_branch" and category in ("academic", "adult", "academic_support", "child_skill", "language"):
         b = BRANCH_MAP_4.get(num)
         if b:
-            if category == "academic":
+            if category in ("academic_support", "child_skill", "language"):
+                show_category_courses(from_number, b, category)
+            elif category == "academic":
                 set_session(from_number, {
                     "step": "select_course",
                     "category": "academic",
@@ -1463,16 +1465,23 @@ def handle_number_input(from_number, num, session):
             return True
 
     # ── Course selection (numbered list) ──
-    if step == "select_course" and category in ("academic", "adult"):
-        if category == "academic":
-            courses = CHILDREN_COURSES.get(branch, [])
-        else:
-            courses = ADULT_COURSES.get(branch, [])
-        idx = int(num) - 1
-        if 0 <= idx < len(courses):
-            course_id = courses[idx]["id"]
-            show_course_detail(from_number, course_id, branch, category)
-            return True
+    if step == "select_course":
+        COURSE_DICT_MAP = {
+            "academic_support": ACADEMIC_SUPPORT_COURSES,
+            "child_skill": CHILD_SKILL_COURSES,
+            "language": LANGUAGE_COURSES,
+            "adult": ADULT_COURSES,
+        }
+        course_dict = COURSE_DICT_MAP.get(category, ADULT_COURSES)
+        courses = course_dict.get(branch, [])
+        try:
+            idx = int(num) - 1
+            if 0 <= idx < len(courses):
+                course_id = courses[idx]["id"]
+                show_course_detail(from_number, course_id, branch, category)
+                return True
+        except (ValueError, TypeError):
+            pass
 
     # ── Default: main menu numbers ──
     menu_id = MAIN_MENU_MAP.get(num)
