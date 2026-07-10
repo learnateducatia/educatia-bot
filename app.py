@@ -242,10 +242,16 @@ def show_branch_list(to, category):
     """4-option branch picker (Academic / Adult — includes Online)."""
     set_session(to, {"step": "select_branch", "category": category})
 
-    if category == "academic":
+    if category == "academic_support":
+        label = "📚 *Academic Support*"
+    elif category == "child_skill":
+        label = "🔬 *Child Skill Development*"
+    elif category == "language":
+        label = "🗣 *Language Training*"
+    elif category in ("academic",):
         label = "📚 *Academic Classes for Children*"
     else:
-        label = "👨‍💼 *Adult Classes*"
+        label = "👨‍💼 *Courses for Adults*"
 
     body = (
         f"{label}\n\n"
