@@ -180,7 +180,6 @@ def show_main_menu(to):
                 {"id": "cat_branches", "title": "Branch Info & Timings", "description": "Our 3 Dubai locations"},
                 {"id": "cat_admission", "title": "Admission Process", "description": "How to register"},
                 {"id": "cat_team", "title": "Talk to Our Team", "description": "Speak to staff directly"},
-                {"id": "cat_other", "title": "Other Enquiry", "description": "Please specify your query"},
             ],
         }
     ]
@@ -198,8 +197,7 @@ def show_main_menu(to):
             "5️⃣ Day Care\n"
             "6️⃣ Branch Info & Timings\n"
             "7️⃣ Admission Process\n"
-            "8️⃣ Talk to Our Team\n"
-            "9️⃣ Other Enquiry"
+            "8️⃣ Talk to Our Team"
         ),
         button_text="View Options",
         sections=sections,
@@ -1405,7 +1403,6 @@ MAIN_MENU_MAP = {
     "6": "cat_branches",
     "7": "cat_admission",
     "8": "cat_team",
-    "9": "cat_other",
 }
 
 
