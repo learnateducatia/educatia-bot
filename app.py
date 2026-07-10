@@ -531,9 +531,9 @@ def show_stem_teen(to, branch):
 ACADEMIC_SUPPORT_COURSES = {
     "ic": [
         {"id": "as_lang", "title": "Languages", "description": "Arabic/French/Hindi/English"},
-        {"id": "as_math", "title": "Mathematics", "description": "Beginner / Inter / Advanced"},
-        {"id": "as_science", "title": "Science", "description": "Physics / Chemistry / Biology"},
-        {"id": "as_commerce", "title": "Commerce & Accounting", "description": "Accounts/BST/Economics"},
+        {"id": "as_math", "title": "Insight in Mathematics", "description": "Beginner/Inter/Adv"},
+        {"id": "as_science", "title": "Insight in Science", "description": "Phy/Chem/Bio"},
+        {"id": "as_commerce", "title": "Commerce and Accounting", "description": "Accounts/BST/Eco"},
     ],
     "dso": [
         {"id": "as_lang", "title": "Languages", "description": "Arabic/French/Hindi/English"},
@@ -560,12 +560,12 @@ CHILD_SKILL_COURSES = {
     "ic": [
         {"id": "cs_abacus", "title": "Abacus", "description": "Ages 6-10, mental arithmetic"},
         {"id": "cs_vedic", "title": "Vedic Maths", "description": "Ages 8-16, fast calculations"},
-        {"id": "cs_coding", "title": "Coding for Kids", "description": "Scratch/Python/App Dev"},
-        {"id": "cs_robotics", "title": "Robotics", "description": "Beginner / Inter / Advanced"},
-        {"id": "cs_handwriting", "title": "Handwriting", "description": "Beautiful writing skills"},
-        {"id": "cs_creative", "title": "Creative Skills", "description": "Art & Craft sessions"},
-        {"id": "cs_science_exp", "title": "Live Science Experiments", "description": "Ages 10+"},
-        {"id": "cs_msoffice", "title": "MS Office for Kids", "description": "Word, Excel, PowerPoint"},
+        {"id": "cs_coding", "title": "Coding for Kids", "description": "Scratch/Python/App development"},
+        {"id": "cs_robotics", "title": "Robotics", "description": "Beginner/Inter/Adv"},
+        {"id": "cs_handwriting", "title": "Handwriting is beautiful", "description": "Writing skills"},
+        {"id": "cs_creative", "title": "Creative skills", "description": "Art & Craft sessions"},
+        {"id": "cs_science_exp", "title": "Live science experiments", "description": "Ages 10+"},
+        {"id": "cs_msoffice", "title": "MS Office", "description": "Beginner/Inter"},
     ],
     "dso": [
         {"id": "cs_abacus", "title": "Abacus", "description": "Mental arithmetic"},
@@ -598,13 +598,12 @@ CHILD_SKILL_COURSES = {
 # ── Language Training ──
 LANGUAGE_COURSES = {
     "ic": [
-        {"id": "lt_eng_beg", "title": "English Comm - Beginner", "description": "Ages 5+, 36 hrs/level"},
-        {"id": "lt_eng_int", "title": "English Comm - Inter", "description": "Ages 8+, 24 hrs/level"},
-        {"id": "lt_phonics", "title": "Phonics Classes", "description": "Ages 5+, 36 hrs/level"},
-        {"id": "lt_pubspeak", "title": "Public Speaking", "description": "Ages 8+, 16 hrs/level"},
-        {"id": "lt_arabic_rw", "title": "Arabic Reading & Writing", "description": "Ages 6+"},
-        {"id": "lt_hindi_rw", "title": "Hindi Reading & Writing", "description": "Ages 6+"},
-        {"id": "lt_french_rw", "title": "French Reading & Writing", "description": "Ages 6+"},
+        {"id": "lt_eng_beg", "title": "English communication", "description": "Beginner/Inter level"},
+        {"id": "lt_phonics", "title": "Phonics classes", "description": "Ages 5+, 36 hrs/level"},
+        {"id": "lt_pubspeak", "title": "Public speaking", "description": "& Creative writing"},
+        {"id": "lt_arabic_rw", "title": "Arabic reading & writing", "description": "Ages 6+"},
+        {"id": "lt_hindi_rw", "title": "Hindi reading & writing", "description": "Ages 6+"},
+        {"id": "lt_french_rw", "title": "French reading & writing", "description": "Ages 6+"},
     ],
     "dso": [
         {"id": "lt_eng_beg", "title": "English Comm - Beginner", "description": "Foundation English"},
@@ -679,12 +678,12 @@ def show_academic_courses(to, branch):
 
 ADULT_COURSES = {
     "ic": [
-        {"id": "a_eng_basic", "title": "English - Beginner", "description": "Beginner / Elementary"},
-        {"id": "a_eng_adv", "title": "English - Intermediate+", "description": "Pre-Inter to Advanced"},
-        {"id": "a_arabic", "title": "Spoken Arabic", "description": "Beginner to Advanced"},
-        {"id": "a_ielts", "title": "IELTS", "description": "Academic & General"},
-        {"id": "a_excel", "title": "Professional Excel", "description": "Excel skills for adults"},
-        {"id": "a_python", "title": "Python Coding", "description": "Programming for adults"},
+        {"id": "a_eng_basic", "title": "English Comm Beg/Elem", "description": "Beginner/Elementary"},
+        {"id": "a_eng_adv", "title": "English Comm Inter+", "description": "PreInter/Inter/Upper/Advanced"},
+        {"id": "a_arabic", "title": "Spoken Arabic", "description": "Beginner/Inter/Advanced"},
+        {"id": "a_ielts", "title": "IELTS Academic/General", "description": "Exam preparation"},
+        {"id": "a_excel", "title": "Professional Excel Skills", "description": "For Adults"},
+        {"id": "a_python", "title": "Python Coding Language", "description": "Programming for adults"},
         {"id": "a_grw", "title": "Get Ready To Work", "description": "MS Office + AI training"},
     ],
     "dso": [
@@ -894,11 +893,11 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "as_math" and branch == "ic":
         text = (
-            "📐 *Academic Support — Mathematics*\n"
+            "📐 *Academic Support — Insight in Mathematics*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "Insight in Mathematics (Beginner / Inter / Advanced)\n\n"
-            "Our Maths classes help students stay on track with their school curriculum, "
+            "Insight in Mathematics (Beginner/Inter/Adv)\n\n"
+            "Our Insight in Mathematics classes help students stay on track with their school curriculum, "
             "strengthen key concepts and improve academic performance.\n\n"
             "💰 *Fees:*\n"
             "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
@@ -911,11 +910,11 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "as_science" and branch == "ic":
         text = (
-            "🔬 *Academic Support — Science*\n"
+            "🔬 *Academic Support — Insight in Science*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "Insight in Science (Physics / Chemistry / Biology)\n\n"
-            "Our Science classes help students stay on track with their school curriculum, "
+            "Insight in Science (Phy/Chem/Bio)\n\n"
+            "Our Insight in Science classes help students stay on track with their school curriculum, "
             "strengthen key concepts and improve academic performance.\n\n"
             "💰 *Fees:*\n"
             "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
@@ -928,11 +927,11 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "as_commerce" and branch == "ic":
         text = (
-            "💼 *Academic Support — Commerce & Accounting*\n"
+            "💼 *Academic Support — Commerce and Accounting*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "Accounts / Business Studies / Economics\n\n"
-            "Our Commerce & Accounting classes help students stay on track with their school curriculum "
+            "Commerce and Accounting (Accounts/BST/Eco)\n\n"
+            "Our Commerce and Accounting classes help students stay on track with their school curriculum "
             "and improve academic performance.\n\n"
             "💰 *Fees:*\n"
             "• Classes conducted twice or thrice a week (based on requirements)\n"
@@ -1003,7 +1002,7 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "cs_robotics" and branch == "ic":
         text = (
-            "🤖 *Robotics — International City*\n"
+            "🤖 *Robotics (Beginner/Inter/Adv) — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 7 years and above\n"
             "⏱ Duration: Min 18 hours per level\n\n"
@@ -1022,7 +1021,7 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "cs_handwriting" and branch == "ic":
         text = (
-            "✍️ *Handwriting — International City*\n"
+            "✍️ *Handwriting is beautiful — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 6 years and above\n"
             "⏱ Duration: Min 24 hours per level\n\n"
@@ -1040,11 +1039,11 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "cs_creative" and branch == "ic":
         text = (
-            "🎨 *Creative Skills — International City*\n"
+            "🎨 *Creative skills — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
             "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
-            "ℹ️ Creative Skills sessions are offered as part of our Summer & Winter Camps.\n\n"
+            "ℹ️ Creative skills sessions are offered as part of our Summer & Winter Camps.\n\n"
             "📞 Contact us for the next camp schedule:\n"
             "*+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
@@ -1054,7 +1053,7 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "cs_science_exp" and branch == "ic":
         text = (
-            "⚗️ *Live Science Experiments — International City*\n"
+            "⚗️ *Live science experiments — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 10 years and above\n"
             "⏱ Duration: Min 12 hours per level\n\n"
@@ -1073,7 +1072,7 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "cs_msoffice" and branch == "ic":
         text = (
-            "💾 *MS Office for Kids — International City*\n"
+            "💾 *MS Office (Beginner/Inter) — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 9 years and above\n"
             "⏱ Duration: Min 20 hours per level\n\n"
@@ -1093,7 +1092,7 @@ def show_course_detail(to, course_id, branch, category):
     # ── LANGUAGE TRAINING COURSES (IC) ──
     if course_id == "lt_eng_beg" and branch == "ic":
         text = (
-            "🗣 *English Communication — Beginner*\n"
+            "🗣 *English communication — Beginner/Inter*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 5 years and above\n"
@@ -1143,7 +1142,7 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_pubspeak" and branch == "ic":
         text = (
-            "🎤 *Public Speaking & Creative Writing*\n"
+            "🎤 *Public speaking and Creative writing*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 8 years and above\n"
@@ -1160,7 +1159,7 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_arabic_rw" and branch == "ic":
         text = (
-            "🌙 *Arabic Reading & Writing — International City*\n"
+            "🌙 *Arabic reading and writing skills — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 6 years and above\n"
             "⏱ Duration: Min 24 hours per level\n\n"
