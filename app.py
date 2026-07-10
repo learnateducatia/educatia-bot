@@ -682,7 +682,7 @@ ADULT_COURSES = {
         {"id": "a_eng_adv", "title": "English Comm Inter+", "description": "PreInter/Inter/Upper/Advanced"},
         {"id": "a_arabic", "title": "Spoken Arabic", "description": "Beginner/Inter/Advanced"},
         {"id": "a_ielts", "title": "IELTS Academic/General", "description": "Exam preparation"},
-        {"id": "a_excel", "title": "Professional Excel Skills", "description": "For Adults"},
+        {"id": "a_excel", "title": "Excel Skills for Adults", "description": "For Adults"},
         {"id": "a_python", "title": "Python Coding Language", "description": "Programming for adults"},
         {"id": "a_grw", "title": "Get Ready To Work", "description": "MS Office + AI training"},
     ],
