@@ -172,14 +172,15 @@ def show_main_menu(to):
         {
             "title": "How can we help?",
             "rows": [
-                {"id": "cat_summer", "title": "Summer Camp 2026", "description": "Fun activities for ages 5-16"},
-                {"id": "cat_stem", "title": "STEM Camp 2026", "description": "Robotics, coding & science"},
-                {"id": "cat_academic", "title": "Academic Classes", "description": "Courses for children"},
-                {"id": "cat_adult", "title": "Adult Classes", "description": "Professional courses"},
-                {"id": "cat_daycare", "title": "Day Care", "description": "Safe learning environment"},
+                {"id": "cat_acadsupport", "title": "Academic Support", "description": "All curriculums & subjects"},
+                {"id": "cat_childskill", "title": "Child Skill Development", "description": "Abacus, Coding, Robotics"},
+                {"id": "cat_language", "title": "Language Training", "description": "English, Arabic, Hindi, French"},
+                {"id": "cat_adult", "title": "Courses for Adults", "description": "Professional courses"},
+                {"id": "cat_daycare", "title": "Day Care", "description": "DSO branch — Mon to Fri"},
                 {"id": "cat_branches", "title": "Branch Info & Timings", "description": "Our 3 Dubai locations"},
                 {"id": "cat_admission", "title": "Admission Process", "description": "How to register"},
                 {"id": "cat_team", "title": "Talk to Our Team", "description": "Speak to staff directly"},
+                {"id": "cat_other", "title": "Other Enquiry", "description": "Please specify your query"},
             ],
         }
     ]
@@ -190,14 +191,15 @@ def show_main_menu(to):
             "We offer world-class courses for children & adults "
             "across our three Dubai branches + online.\n\n"
             "Tap below or reply with a number:\n\n"
-            "1️⃣ Summer Camp 2026\n"
-            "2️⃣ STEM Camp 2026\n"
-            "3️⃣ Academic Classes (Children)\n"
-            "4️⃣ Adult Classes\n"
+            "1️⃣ Academic Support\n"
+            "2️⃣ Child Skill Development\n"
+            "3️⃣ Language Training\n"
+            "4️⃣ Courses for Adults\n"
             "5️⃣ Day Care\n"
             "6️⃣ Branch Info & Timings\n"
             "7️⃣ Admission Process\n"
-            "8️⃣ Talk to Our Team"
+            "8️⃣ Talk to Our Team\n"
+            "9️⃣ Other Enquiry"
         ),
         button_text="View Options",
         sections=sections,
@@ -521,40 +523,108 @@ def show_stem_teen(to, branch):
 # FLOW: ACADEMIC CLASSES (Children) per branch
 # =============================================
 
-CHILDREN_COURSES = {
+# ── Academic Support (all curriculums & subjects) ──
+ACADEMIC_SUPPORT_COURSES = {
     "ic": [
-        {"id": "c_arabic", "title": "Arabic", "description": "Language course for children"},
-        {"id": "c_french", "title": "French", "description": "Language course for children"},
-        {"id": "c_comms", "title": "Communication Skills", "description": "English communication"},
-        {"id": "c_hindi", "title": "Hindi", "description": "Language course for children"},
-        {"id": "c_math", "title": "Mathematics", "description": "All levels"},
-        {"id": "c_science", "title": "Science", "description": "Fun science learning"},
-        {"id": "c_msoffice", "title": "MS Office for Kids", "description": "Word, Excel, PowerPoint"},
-        {"id": "c_ielts", "title": "IELTS", "description": "Exam preparation"},
+        {"id": "as_lang", "title": "Languages", "description": "Arabic/French/Hindi/English"},
+        {"id": "as_math", "title": "Mathematics", "description": "Beginner / Inter / Advanced"},
+        {"id": "as_science", "title": "Science", "description": "Physics / Chemistry / Biology"},
+        {"id": "as_commerce", "title": "Commerce & Accounting", "description": "Accounts/BST/Economics"},
     ],
     "dso": [
-        {"id": "c_arabic", "title": "Arabic", "description": "Language course for children"},
-        {"id": "c_french", "title": "French", "description": "Language course for children"},
-        {"id": "c_comms", "title": "Communication Skills", "description": "English communication"},
-        {"id": "c_hindi", "title": "Hindi", "description": "Language course for children"},
-        {"id": "c_math", "title": "Mathematics", "description": "All levels"},
-        {"id": "c_science", "title": "Science", "description": "Fun science learning"},
-        {"id": "c_msoffice", "title": "MS Office for Kids", "description": "Word, Excel, PowerPoint"},
-        {"id": "c_ielts", "title": "IELTS", "description": "Exam preparation"},
+        {"id": "as_lang", "title": "Languages", "description": "Arabic/French/Hindi/English"},
+        {"id": "as_math", "title": "Mathematics", "description": "Beginner / Inter / Advanced"},
+        {"id": "as_science", "title": "Science", "description": "Physics / Chemistry / Biology"},
+        {"id": "as_commerce", "title": "Commerce & Accounting", "description": "Accounts/BST/Economics"},
     ],
     "jadaf": [
-        {"id": "c_abacus", "title": "Abacus", "description": "Mental math for children"},
-        {"id": "c_ielts", "title": "IELTS", "description": "Exam preparation"},
+        {"id": "as_lang", "title": "Languages", "description": "Arabic/French/Hindi/English"},
+        {"id": "as_math", "title": "Mathematics", "description": "Beginner / Inter / Advanced"},
+        {"id": "as_science", "title": "Science", "description": "Physics / Chemistry / Biology"},
+        {"id": "as_commerce", "title": "Commerce & Accounting", "description": "Accounts/BST/Economics"},
     ],
     "online": [
-        {"id": "c_arabic", "title": "Arabic", "description": "Language course for children"},
-        {"id": "c_french", "title": "French", "description": "Language course for children"},
-        {"id": "c_comms", "title": "Communication Skills", "description": "Beginner to Advanced"},
-        {"id": "c_hindi", "title": "Hindi", "description": "Language course for children"},
-        {"id": "c_math", "title": "Mathematics", "description": "All levels"},
-        {"id": "c_science", "title": "Science", "description": "Fun science learning"},
-        {"id": "c_msoffice", "title": "MS Office for Kids", "description": "Word, Excel, PowerPoint"},
-        {"id": "c_ielts", "title": "IELTS", "description": "Exam preparation"},
+        {"id": "as_lang", "title": "Languages", "description": "Arabic/French/Hindi/English"},
+        {"id": "as_math", "title": "Mathematics", "description": "Beginner / Inter / Advanced"},
+        {"id": "as_science", "title": "Science", "description": "Physics / Chemistry / Biology"},
+        {"id": "as_commerce", "title": "Commerce & Accounting", "description": "Accounts/BST/Economics"},
+    ],
+}
+
+# ── Child Skill Development ──
+CHILD_SKILL_COURSES = {
+    "ic": [
+        {"id": "cs_abacus", "title": "Abacus", "description": "Ages 6-10, mental arithmetic"},
+        {"id": "cs_vedic", "title": "Vedic Maths", "description": "Ages 8-16, fast calculations"},
+        {"id": "cs_coding", "title": "Coding for Kids", "description": "Scratch/Python/App Dev"},
+        {"id": "cs_robotics", "title": "Robotics", "description": "Beginner / Inter / Advanced"},
+        {"id": "cs_handwriting", "title": "Handwriting", "description": "Beautiful writing skills"},
+        {"id": "cs_creative", "title": "Creative Skills", "description": "Art & Craft sessions"},
+        {"id": "cs_science_exp", "title": "Live Science Experiments", "description": "Ages 10+"},
+        {"id": "cs_msoffice", "title": "MS Office for Kids", "description": "Word, Excel, PowerPoint"},
+    ],
+    "dso": [
+        {"id": "cs_abacus", "title": "Abacus", "description": "Mental arithmetic"},
+        {"id": "cs_vedic", "title": "Vedic Maths", "description": "Fast calculations"},
+        {"id": "cs_coding", "title": "Coding for Kids", "description": "Scratch/Python/App Dev"},
+        {"id": "cs_robotics", "title": "Robotics", "description": "Beginner / Inter / Advanced"},
+        {"id": "cs_handwriting", "title": "Handwriting", "description": "Beautiful writing"},
+        {"id": "cs_creative", "title": "Creative Skills", "description": "Art & Craft"},
+        {"id": "cs_science_exp", "title": "Live Science Experiments", "description": "Hands-on science"},
+        {"id": "cs_msoffice", "title": "MS Office for Kids", "description": "Word, Excel, PowerPoint"},
+    ],
+    "jadaf": [
+        {"id": "cs_abacus", "title": "Abacus", "description": "Mental arithmetic"},
+        {"id": "cs_vedic", "title": "Vedic Maths", "description": "Fast calculations"},
+        {"id": "cs_coding", "title": "Coding for Kids", "description": "Scratch/Python/App Dev"},
+        {"id": "cs_robotics", "title": "Robotics", "description": "Beginner / Inter / Advanced"},
+        {"id": "cs_msoffice", "title": "MS Office for Kids", "description": "Word, Excel, PowerPoint"},
+    ],
+    "online": [
+        {"id": "cs_abacus", "title": "Abacus", "description": "Mental arithmetic"},
+        {"id": "cs_vedic", "title": "Vedic Maths", "description": "Fast calculations"},
+        {"id": "cs_coding", "title": "Coding for Kids", "description": "Scratch/Python/App Dev"},
+        {"id": "cs_robotics", "title": "Robotics", "description": "Beginner / Inter / Advanced"},
+        {"id": "cs_handwriting", "title": "Handwriting", "description": "Beautiful writing"},
+        {"id": "cs_creative", "title": "Creative Skills", "description": "Art & Craft"},
+        {"id": "cs_msoffice", "title": "MS Office for Kids", "description": "Word, Excel, PowerPoint"},
+    ],
+}
+
+# ── Language Training ──
+LANGUAGE_COURSES = {
+    "ic": [
+        {"id": "lt_eng_beg", "title": "English Comm - Beginner", "description": "Ages 5+, 36 hrs/level"},
+        {"id": "lt_eng_int", "title": "English Comm - Inter", "description": "Ages 8+, 24 hrs/level"},
+        {"id": "lt_phonics", "title": "Phonics Classes", "description": "Ages 5+, 36 hrs/level"},
+        {"id": "lt_pubspeak", "title": "Public Speaking", "description": "Ages 8+, 16 hrs/level"},
+        {"id": "lt_arabic_rw", "title": "Arabic Reading & Writing", "description": "Ages 6+"},
+        {"id": "lt_hindi_rw", "title": "Hindi Reading & Writing", "description": "Ages 6+"},
+        {"id": "lt_french_rw", "title": "French Reading & Writing", "description": "Ages 6+"},
+    ],
+    "dso": [
+        {"id": "lt_eng_beg", "title": "English Comm - Beginner", "description": "Foundation English"},
+        {"id": "lt_eng_int", "title": "English Comm - Inter", "description": "Intermediate English"},
+        {"id": "lt_pubspeak", "title": "Public Speaking", "description": "Confident communication"},
+        {"id": "lt_arabic_rw", "title": "Arabic Reading & Writing", "description": "Arabic skills"},
+        {"id": "lt_hindi_rw", "title": "Hindi Reading & Writing", "description": "Hindi skills"},
+        {"id": "lt_french_rw", "title": "French Reading & Writing", "description": "French skills"},
+    ],
+    "jadaf": [
+        {"id": "lt_eng_beg", "title": "English Comm - Beginner", "description": "Foundation English"},
+        {"id": "lt_eng_int", "title": "English Comm - Inter", "description": "Intermediate English"},
+        {"id": "lt_pubspeak", "title": "Public Speaking", "description": "Confident communication"},
+        {"id": "lt_arabic_rw", "title": "Arabic Reading & Writing", "description": "Arabic skills"},
+        {"id": "lt_hindi_rw", "title": "Hindi Reading & Writing", "description": "Hindi skills"},
+        {"id": "lt_french_rw", "title": "French Reading & Writing", "description": "French skills"},
+    ],
+    "online": [
+        {"id": "lt_eng_beg", "title": "English Comm - Beginner", "description": "Foundation English"},
+        {"id": "lt_eng_int", "title": "English Comm - Inter", "description": "Intermediate English"},
+        {"id": "lt_pubspeak", "title": "Public Speaking", "description": "Confident communication"},
+        {"id": "lt_arabic_rw", "title": "Arabic Reading & Writing", "description": "Arabic skills"},
+        {"id": "lt_hindi_rw", "title": "Hindi Reading & Writing", "description": "Hindi skills"},
+        {"id": "lt_french_rw", "title": "French Reading & Writing", "description": "French skills"},
     ],
 }
 
@@ -566,31 +636,37 @@ BRANCH_NAMES = {
 }
 
 
-def show_academic_courses(to, branch):
-    set_session(to, {"step": "select_course", "category": "academic", "branch": branch})
-    courses = CHILDREN_COURSES.get(branch, [])
+def show_category_courses(to, branch, category):
+    """Show courses list for a given category and branch."""
+    COURSE_MAP = {
+        "academic_support": (ACADEMIC_SUPPORT_COURSES, "📖 *Academic Support"),
+        "child_skill": (CHILD_SKILL_COURSES, "🔬 *Child Skill Development"),
+        "language": (LANGUAGE_COURSES, "🗣 *Language Training"),
+    }
+    course_dict, label_prefix = COURSE_MAP.get(category, (ACADEMIC_SUPPORT_COURSES, "📚 *Courses"))
+    set_session(to, {"step": "select_course", "category": category, "branch": branch})
+    courses = course_dict.get(branch, [])
     if not courses:
-        send_text(to, "Sorry, no children's courses found for this branch. Reply *menu* to go back 🔙")
+        send_text(to, "Sorry, no courses found for this branch. Reply *menu* to go back 🔙")
         return
-
     bname = BRANCH_NAMES.get(branch, branch)
-    # Build numbered text for body
-    numbered = "\n".join(
-        f"{i+1}. {c['title']}" for i, c in enumerate(courses)
-    )
+    numbered = "\n".join(f"{i+1}. {c['title']}" for i, c in enumerate(courses))
     sections = [{"title": "Available Courses", "rows": courses}]
     send_list(
         to,
         body=(
-            f"📚 *Children's Courses — {bname}*\n\n"
+            f"{label_prefix} — {bname}*\n\n"
             "Tap below or reply with the course number:\n\n"
-            f"{numbered}\n\n"
-            "📝 *Detailed pricing available for English & Arabic courses.*"
+            f"{numbered}"
         ),
         button_text="View Courses",
         sections=sections,
         footer="Reply 'menu' for main menu",
     )
+
+
+def show_academic_courses(to, branch):
+    show_category_courses(to, branch, "academic_support")
 
 
 # =============================================
@@ -599,12 +675,13 @@ def show_academic_courses(to, branch):
 
 ADULT_COURSES = {
     "ic": [
-        {"id": "a_comms", "title": "Communication Skills", "description": "Adults – English fluency"},
-        {"id": "a_arabic", "title": "Spoken Arabic", "description": "Language course for adults"},
-        {"id": "a_ielts", "title": "IELTS", "description": "Exam preparation"},
-        {"id": "a_msoffice", "title": "MS Office", "description": "Word, Excel, PowerPoint"},
-        {"id": "a_excel", "title": "MS Excel", "description": "Spreadsheet mastery"},
-        {"id": "a_word", "title": "MS Word", "description": "Document skills"},
+        {"id": "a_eng_basic", "title": "English - Beginner", "description": "Beginner / Elementary"},
+        {"id": "a_eng_adv", "title": "English - Intermediate+", "description": "Pre-Inter to Advanced"},
+        {"id": "a_arabic", "title": "Spoken Arabic", "description": "Beginner to Advanced"},
+        {"id": "a_ielts", "title": "IELTS", "description": "Academic & General"},
+        {"id": "a_excel", "title": "Professional Excel", "description": "Excel skills for adults"},
+        {"id": "a_python", "title": "Python Coding", "description": "Programming for adults"},
+        {"id": "a_grw", "title": "Get Ready To Work", "description": "MS Office + AI training"},
     ],
     "dso": [
         {"id": "a_comms", "title": "Communication Skills", "description": "Adults – English fluency"},
@@ -794,27 +871,342 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
-    # --- ALL OTHER COURSES → generic info + contact ---
+    # ── ACADEMIC SUPPORT COURSES (IC) ──
+    if course_id == "as_lang" and branch == "ic":
+        text = (
+            "📚 *Academic Support — Languages*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "We offer academic support in Arabic, French, Hindi & English "
+            "for all curriculums: CBSE / ICSE / GCSE / IGCSE / AS & A Levels / IB / American\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_math" and branch == "ic":
+        text = (
+            "📐 *Academic Support — Mathematics*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Insight in Mathematics (Beginner / Inter / Advanced)\n\n"
+            "Our Maths classes help students stay on track with their school curriculum, "
+            "strengthen key concepts and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_science" and branch == "ic":
+        text = (
+            "🔬 *Academic Support — Science*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Insight in Science (Physics / Chemistry / Biology)\n\n"
+            "Our Science classes help students stay on track with their school curriculum, "
+            "strengthen key concepts and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_commerce" and branch == "ic":
+        text = (
+            "💼 *Academic Support — Commerce & Accounting*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Accounts / Business Studies / Economics\n\n"
+            "Our Commerce & Accounting classes help students stay on track with their school curriculum "
+            "and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Classes conducted twice or thrice a week (based on requirements)\n"
+            "• Offered under a yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    # ── CHILD SKILL DEVELOPMENT COURSES (IC) ──
+    if course_id == "cs_abacus" and branch == "ic":
+        text = (
+            "🔢 *Abacus — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 to 10 years\n"
+            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
+            "Develop strong mental arithmetic skills through bead-based calculations. "
+            "Students learn addition, subtraction, multiplication & division, "
+            "progressing to fast mental calculations.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT\n\n"
+            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_vedic" and branch == "ic":
+        text = (
+            "🧮 *Vedic Maths — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 to 16 years\n"
+            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
+            "Powerful calculation techniques making maths faster, simpler & more accurate. "
+            "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT\n\n"
+            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_coding" and branch == "ic":
+        text = (
+            "💻 *Coding for Kids — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 7 years and above\n"
+            "⏱ Duration: Min 18 hours per level\n\n"
+            "Scratch / Python / App Development\n\n"
+            "Introduces children to computational thinking and programming. "
+            "Students learn inputs, outputs, logic, algorithms & problem-solving "
+            "while building essential coding skills for the future.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_robotics" and branch == "ic":
+        text = (
+            "🤖 *Robotics — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 7 years and above\n"
+            "⏱ Duration: Min 18 hours per level\n\n"
+            "Beginner / Intermediate / Advanced\n\n"
+            "Students work with micro:bit & Arduino, learning sensors, inputs, outputs, "
+            "programming & debugging to build functional robotic projects.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_handwriting" and branch == "ic":
+        text = (
+            "✍️ *Handwriting — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Develop neat, legible & confident handwriting through guided practice. "
+            "Focuses on letter formation, spacing, alignment, writing speed & presentation.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Practice Book • Worksheets • Feedback • Educatia Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_creative" and branch == "ic":
+        text = (
+            "🎨 *Creative Skills — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
+            "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
+            "ℹ️ Creative Skills sessions are offered as part of our Summer & Winter Camps.\n\n"
+            "📞 Contact us for the next camp schedule:\n"
+            "*+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_science_exp" and branch == "ic":
+        text = (
+            "⚗️ *Live Science Experiments — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 10 years and above\n"
+            "⏱ Duration: Min 12 hours per level\n\n"
+            "Exciting hands-on experiments introducing children to the fascinating world of science. "
+            "Students explore scientific concepts by observing, experimenting & understanding "
+            "the 'why' behind everyday phenomena.\n\n"
+            "ℹ️ Also offered as complimentary enrichment for Academic Support Science students.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 500 + VAT per level\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_msoffice" and branch == "ic":
+        text = (
+            "💾 *MS Office for Kids — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 9 years and above\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Microsoft Word • PowerPoint • Excel\n\n"
+            "Students learn to create documents, presentations & spreadsheets. "
+            "Also includes introduction to AI tools for learning & creativity.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Practical Word/Excel/PowerPoint skills • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    # ── LANGUAGE TRAINING COURSES (IC) ──
+    if course_id == "lt_eng_beg" and branch == "ic":
+        text = (
+            "🗣 *English Communication — Beginner*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 5 years and above\n"
+            "⏱ Duration: Min 36 hours per level\n\n"
+            "Helps early learners build confidence in speaking, improve vocabulary "
+            "& develop clear sentence formation through age-appropriate activities.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_eng_int" and branch == "ic":
+        text = (
+            "🗣 *English Communication — Intermediate*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Builds on foundational English skills — speaking, vocabulary, sentence formation, "
+            "grammar & listening in a supportive and engaging environment.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_phonics" and branch == "ic":
+        text = (
+            "🔤 *Phonics Classes — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 5 years and above\n"
+            "⏱ Duration: Min 36 hours per level\n\n"
+            "Systematic sound-based learning — letter sounds, blending techniques, "
+            "word formation & reading strategies. Builds a strong foundation in English.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_pubspeak" and branch == "ic":
+        text = (
+            "🎤 *Public Speaking & Creative Writing*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 years and above\n"
+            "⏱ Duration: Min 16 hours per level\n\n"
+            "Helps children express thoughts confidently & creatively through storytelling, "
+            "writing exercises & speaking practices. Develop communication, vocabulary & confidence.\n\n"
+            "💰 *Course Fee: AED 900 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_arabic_rw" and branch == "ic":
+        text = (
+            "🌙 *Arabic Reading & Writing — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Learn Arabic alphabets, correct pronunciation, reading techniques & writing skills. "
+            "Structured and practical lessons for school-going children.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    # ── ALL OTHER COURSES (DSO/Jadaf/Online or unspecified) → generic info + contact ---
     course_names = {
-        "c_french": "French",
-        "c_hindi": "Hindi",
-        "c_math": "Mathematics",
-        "c_science": "Science",
-        "c_msoffice": "MS Office for Kids",
-        "c_ielts": "IELTS",
-        "c_abacus": "Abacus",
+        "as_lang": "Languages — Academic Support",
+        "as_math": "Mathematics — Academic Support",
+        "as_science": "Science — Academic Support",
+        "as_commerce": "Commerce & Accounting",
+        "cs_abacus": "Abacus",
+        "cs_vedic": "Vedic Maths",
+        "cs_coding": "Coding for Kids",
+        "cs_robotics": "Robotics",
+        "cs_handwriting": "Handwriting",
+        "cs_creative": "Creative Skills",
+        "cs_science_exp": "Live Science Experiments",
+        "cs_msoffice": "MS Office for Kids",
+        "lt_eng_beg": "English Communication — Beginner",
+        "lt_eng_int": "English Communication — Intermediate",
+        "lt_phonics": "Phonics Classes",
+        "lt_pubspeak": "Public Speaking & Creative Writing",
+        "lt_arabic_rw": "Arabic Reading & Writing",
+        "lt_hindi_rw": "Hindi Reading & Writing",
+        "lt_french_rw": "French Reading & Writing",
+        "a_eng_basic": "English — Beginner",
+        "a_eng_adv": "English — Intermediate+",
         "a_ielts": "IELTS",
+        "a_excel": "Professional Excel",
+        "a_python": "Python Coding",
+        "a_grw": "Get Ready To Work",
         "a_msoffice": "MS Office",
-        "a_excel": "MS Excel",
         "a_word": "MS Word",
         "a_french": "French",
         "a_abacus": "Abacus",
+        "c_ielts": "IELTS",
     }
     cname = course_names.get(course_id, course_id)
     text = (
         f"📚 *{cname} — {bname}*\n\n"
-        f"We offer {cname} courses at our {bname} branch.\n\n"
-        "⏱️ Duration: 1 Hour per Session\n"
+        f"We offer {cname} at our {bname} branch.\n\n"
         f"📍 Location: {bname}\n\n"
         "For detailed pricing, batch timings, and enrollment:\n\n"
         "📞 *Contact: +971 50 460 5940*\n"
@@ -1005,14 +1397,15 @@ def handle_faq(to, msg):
 BRANCH_MAP_3 = {"1": "ic", "2": "dso", "3": "jadaf"}
 BRANCH_MAP_4 = {"1": "ic", "2": "dso", "3": "jadaf", "4": "online"}
 MAIN_MENU_MAP = {
-    "1": "cat_summer",
-    "2": "cat_stem",
-    "3": "cat_academic",
+    "1": "cat_acadsupport",
+    "2": "cat_childskill",
+    "3": "cat_language",
     "4": "cat_adult",
     "5": "cat_daycare",
     "6": "cat_branches",
     "7": "cat_admission",
     "8": "cat_team",
+    "9": "cat_other",
 }
 
 
@@ -1193,14 +1586,14 @@ def handle_interactive(from_number, item_id, session):
     """Route button / list clicks based on ID."""
 
     # ── Main menu category selections ──
-    if item_id == "cat_summer":
-        show_branch_buttons(from_number, "summer_camp")
+    if item_id == "cat_acadsupport":
+        show_branch_list(from_number, "academic_support")
         return
-    if item_id == "cat_stem":
-        show_branch_buttons(from_number, "stem_camp")
+    if item_id == "cat_childskill":
+        show_branch_list(from_number, "child_skill")
         return
-    if item_id == "cat_academic":
-        show_branch_list(from_number, "academic")
+    if item_id == "cat_language":
+        show_branch_list(from_number, "language")
         return
     if item_id == "cat_adult":
         show_branch_list(from_number, "adult")
@@ -1217,6 +1610,16 @@ def handle_interactive(from_number, item_id, session):
     if item_id == "cat_team":
         show_contact_team(from_number)
         return
+    if item_id == "cat_other":
+        show_other(from_number)
+        return
+    # Legacy summer/stem camp support
+    if item_id == "cat_summer":
+        show_branch_buttons(from_number, "summer_camp")
+        return
+    if item_id == "cat_stem":
+        show_branch_buttons(from_number, "stem_camp")
+        return
 
     # ── Branch selections ──
     if item_id.startswith("branch_"):
@@ -1232,13 +1635,8 @@ def handle_interactive(from_number, item_id, session):
                 "branch": branch,
             })
             show_stem_age_selection(from_number, branch)
-        elif category == "academic":
-            set_session(from_number, {
-                "step": "select_course",
-                "category": "academic",
-                "branch": branch,
-            })
-            show_academic_courses(from_number, branch)
+        elif category in ("academic_support", "child_skill", "language"):
+            show_category_courses(from_number, branch, category)
         elif category == "adult":
             set_session(from_number, {
                 "step": "select_course",
@@ -1247,7 +1645,6 @@ def handle_interactive(from_number, item_id, session):
             })
             show_adult_courses(from_number, branch)
         else:
-            # Fallback — show main menu
             show_main_menu(from_number)
         return
 
@@ -1261,10 +1658,10 @@ def handle_interactive(from_number, item_id, session):
         show_stem_teen(from_number, branch)
         return
 
-    # ── Course selections (academic / adult) ──
-    if item_id.startswith("c_") or item_id.startswith("a_"):
+    # ── Course selections ──
+    if any(item_id.startswith(p) for p in ("c_", "a_", "as_", "cs_", "lt_")):
         branch = session.get("branch", "ic")
-        category = session.get("category", "academic")
+        category = session.get("category", "academic_support")
         show_course_detail(from_number, item_id, branch, category)
         return
 
