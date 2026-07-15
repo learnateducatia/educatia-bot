@@ -882,7 +882,6 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
-    # ── ACADEMIC SUPPORT COURSES (IC) ──
     if course_id == "as_lang" and branch == "ic":
         text = (
             "📚 *Academic Support — Languages*\n"
@@ -892,6 +891,54 @@ def show_course_detail(to, course_id, branch, category):
             "for all curriculums: CBSE / ICSE / GCSE / IGCSE / AS & A Levels / IB / American\n\n"
             "💰 *Fees:*\n"
             "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_lang" and branch == "dso":
+        text = (
+            "📚 *Academic Support — Languages*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "We offer academic support in Arabic, French, Hindi & English "
+            "for all curriculums: CBSE / ICSE / GCSE / IGCSE / AS & A Levels / IB / American\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_lang" and branch == "jadaf":
+        text = (
+            "📚 *Academic Support — Languages*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "We offer academic support in Arabic, French, Hindi & English "
+            "for all curriculums: CBSE / ICSE / GCSE / IGCSE / AS & A Levels / IB / American\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_lang" and branch == "online":
+        text = (
+            "📚 *Academic Support — Languages*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "We offer academic support in Arabic, French, Hindi & English "
+            "for all curriculums: CBSE / ICSE / GCSE / IGCSE / AS & A Levels / IB / American\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 400 + VAT/month (twice a week)\n"
             "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
@@ -916,6 +963,57 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
+    if course_id == "as_math" and branch == "dso":
+        text = (
+            "📐 *Academic Support — Insight in Mathematics*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Insight in Mathematics (Beginner/Inter/Adv)\n\n"
+            "Our Insight in Mathematics classes help students stay on track with their school curriculum, "
+            "strengthen key concepts and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_math" and branch == "jadaf":
+        text = (
+            "📐 *Academic Support — Insight in Mathematics*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Insight in Mathematics (Beginner/Inter/Adv)\n\n"
+            "Our Insight in Mathematics classes help students stay on track with their school curriculum, "
+            "strengthen key concepts and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_math" and branch == "online":
+        text = (
+            "📐 *Academic Support — Insight in Mathematics*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Insight in Mathematics (Beginner/Inter/Adv)\n\n"
+            "Our Insight in Mathematics classes help students stay on track with their school curriculum, "
+            "strengthen key concepts and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "as_science" and branch == "ic":
         text = (
             "🔬 *Academic Support — Insight in Science*\n"
@@ -926,6 +1024,57 @@ def show_course_detail(to, course_id, branch, category):
             "strengthen key concepts and improve academic performance.\n\n"
             "💰 *Fees:*\n"
             "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_science" and branch == "dso":
+        text = (
+            "🔬 *Academic Support — Insight in Science*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Insight in Science (Phy/Chem/Bio)\n\n"
+            "Our Insight in Science classes help students stay on track with their school curriculum, "
+            "strengthen key concepts and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_science" and branch == "jadaf":
+        text = (
+            "🔬 *Academic Support — Insight in Science*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Insight in Science (Phy/Chem/Bio)\n\n"
+            "Our Insight in Science classes help students stay on track with their school curriculum, "
+            "strengthen key concepts and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 350–400 + VAT/month (twice a week)\n"
+            "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_science" and branch == "online":
+        text = (
+            "🔬 *Academic Support — Insight in Science*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Insight in Science (Phy/Chem/Bio)\n\n"
+            "Our Insight in Science classes help students stay on track with their school curriculum, "
+            "strengthen key concepts and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Up to Grade/Year 7: AED 400 + VAT/month (twice a week)\n"
             "• Grade/Year 8 & above: Yearly enrolment plan with installment options\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
@@ -950,7 +1099,57 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
-    # ── CHILD SKILL DEVELOPMENT COURSES (IC) ──
+    if course_id == "as_commerce" and branch == "dso":
+        text = (
+            "💼 *Academic Support — Commerce and Accounting*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Commerce and Accounting (Accounts/BST/Eco)\n\n"
+            "Our Commerce and Accounting classes help students stay on track with their school curriculum "
+            "and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Classes conducted twice or thrice a week (based on requirements)\n"
+            "• Offered under a yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_commerce" and branch == "jadaf":
+        text = (
+            "💼 *Academic Support — Commerce and Accounting*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Commerce and Accounting (Accounts/BST/Eco)\n\n"
+            "Our Commerce and Accounting classes help students stay on track with their school curriculum "
+            "and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Classes conducted twice or thrice a week (based on requirements)\n"
+            "• Offered under a yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "as_commerce" and branch == "online":
+        text = (
+            "💼 *Academic Support — Commerce and Accounting*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Commerce and Accounting (Accounts/BST/Eco)\n\n"
+            "Our Commerce and Accounting classes help students stay on track with their school curriculum "
+            "and improve academic performance.\n\n"
+            "💰 *Fees:*\n"
+            "• Classes conducted twice or thrice a week (based on requirements)\n"
+            "• Offered under a yearly enrolment plan with installment options\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "cs_abacus" and branch == "ic":
         text = (
             "🔢 *Abacus — International City*\n"
@@ -970,6 +1169,63 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
+    if course_id == "cs_abacus" and branch == "dso":
+        text = (
+            "🔢 *Abacus — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 to 10 years\n"
+            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
+            "Develop strong mental arithmetic skills through bead-based calculations. "
+            "Students learn addition, subtraction, multiplication & division, "
+            "progressing to fast mental calculations.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT\n\n"
+            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_abacus" and branch == "jadaf":
+        text = (
+            "🔢 *Abacus — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 to 10 years\n"
+            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
+            "Develop strong mental arithmetic skills through bead-based calculations. "
+            "Students learn addition, subtraction, multiplication & division, "
+            "progressing to fast mental calculations.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT\n\n"
+            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_abacus" and branch == "online":
+        text = (
+            "🔢 *Abacus — Online*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 to 10 years\n"
+            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
+            "Develop strong mental arithmetic skills through bead-based calculations. "
+            "Students learn addition, subtraction, multiplication & division, "
+            "progressing to fast mental calculations.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT\n\n"
+            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "cs_vedic" and branch == "ic":
         text = (
             "🧮 *Vedic Maths — International City*\n"
@@ -980,6 +1236,60 @@ def show_course_detail(to, course_id, branch, category):
             "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
             "💰 *Fees:*\n"
             "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT\n\n"
+            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_vedic" and branch == "dso":
+        text = (
+            "🧮 *Vedic Maths — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 to 16 years\n"
+            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
+            "Powerful calculation techniques making maths faster, simpler & more accurate. "
+            "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT\n\n"
+            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_vedic" and branch == "jadaf":
+        text = (
+            "🧮 *Vedic Maths — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 to 16 years\n"
+            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
+            "Powerful calculation techniques making maths faster, simpler & more accurate. "
+            "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT\n\n"
+            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_vedic" and branch == "online":
+        text = (
+            "🧮 *Vedic Maths — Online*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 to 16 years\n"
+            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
+            "Powerful calculation techniques making maths faster, simpler & more accurate. "
+            "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
             "• Course Fee: AED 1,000 + VAT\n\n"
             "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
@@ -1008,9 +1318,111 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
+    if course_id == "cs_coding" and branch == "dso":
+        text = (
+            "💻 *Coding for Kids — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 7 years and above\n"
+            "⏱ Duration: Min 18 hours per level\n\n"
+            "Scratch / Python / App Development\n\n"
+            "Introduces children to computational thinking and programming. "
+            "Students learn inputs, outputs, logic, algorithms & problem-solving "
+            "while building essential coding skills for the future.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_coding" and branch == "jadaf":
+        text = (
+            "💻 *Coding for Kids — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 7 years and above\n"
+            "⏱ Duration: Min 18 hours per level\n\n"
+            "Scratch / Python / App Development\n\n"
+            "Introduces children to computational thinking and programming. "
+            "Students learn inputs, outputs, logic, algorithms & problem-solving "
+            "while building essential coding skills for the future.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_coding" and branch == "online":
+        text = (
+            "💻 *Coding for Kids — Online*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 7 years and above\n"
+            "⏱ Duration: Min 18 hours per level\n\n"
+            "Scratch / Python / App Development\n\n"
+            "Introduces children to computational thinking and programming. "
+            "Students learn inputs, outputs, logic, algorithms & problem-solving "
+            "while building essential coding skills for the future.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "cs_robotics" and branch == "ic":
         text = (
             "🤖 *Robotics (Beginner/Inter/Adv) — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "📌 Age Group: 7 years and above \n"
+            "⏳ Duration: Minimum of 18 hours per level (class frequency and duration vary depending on the season and batch)\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Robotics Course helps students understand the interaction between hardware and software through hands-on learning. Students work with microcontrollers like micro and Arduino, learn sensors, inputs, outputs, programming, and debugging techniques to build functional robotic projects while developing problem-solving and engineering skills. \n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "💰 Course Fee: Approximately AED 1,000 + VAT per level.\n"
+            "Registration Fee: AED 100 + VAT (one-time)\n"
+            "Course Includes\n"
+            "💻 Hands-on projects and activities\n"
+            "📚 Learning materials and practice exercises\n"
+            "🏅 Educatia Course Completion Certificate\n"
+            "📜 KHDA Certificate (available upon request)\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_robotics" and branch == "dso":
+        text = (
+            "🤖 *Robotics (Beginner/Inter/Adv) — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 7 years and above\n"
+            "⏱ Duration: Min 18 hours per level\n\n"
+            "Beginner / Intermediate / Advanced\n\n"
+            "Students work with micro:bit & Arduino, learning sensors, inputs, outputs, "
+            "programming & debugging to build functional robotic projects.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_robotics" and branch == "jadaf":
+        text = (
+            "🤖 *Robotics (Beginner/Inter/Adv) — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 7 years and above\n"
             "⏱ Duration: Min 18 hours per level\n\n"
@@ -1019,6 +1431,25 @@ def show_course_detail(to, course_id, branch, category):
             "programming & debugging to build functional robotic projects.\n\n"
             "💰 *Fees:*\n"
             "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_robotics" and branch == "online":
+        text = (
+            "🤖 *Robotics (Beginner/Inter/Adv) — Online*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 7 years and above\n"
+            "⏱ Duration: Min 18 hours per level\n\n"
+            "Beginner / Intermediate / Advanced\n\n"
+            "Students work with micro:bit & Arduino, learning sensors, inputs, outputs, "
+            "programming & debugging to build functional robotic projects.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
             "• Course Fee: ~AED 1,000 + VAT per level\n\n"
             "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
@@ -1045,9 +1476,105 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
+    if course_id == "cs_handwriting" and branch == "dso":
+        text = (
+            "✍️ *Handwriting is beautiful — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Develop neat, legible & confident handwriting through guided practice. "
+            "Focuses on letter formation, spacing, alignment, writing speed & presentation.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Practice Book • Worksheets • Feedback • Educatia Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_handwriting" and branch == "jadaf":
+        text = (
+            "✍️ *Handwriting is beautiful — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Develop neat, legible & confident handwriting through guided practice. "
+            "Focuses on letter formation, spacing, alignment, writing speed & presentation.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Practice Book • Worksheets • Feedback • Educatia Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_handwriting" and branch == "online":
+        text = (
+            "✍️ *Handwriting is beautiful — Online*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Develop neat, legible & confident handwriting through guided practice. "
+            "Focuses on letter formation, spacing, alignment, writing speed & presentation.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Practice Book • Worksheets • Feedback • Educatia Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "cs_creative" and branch == "ic":
         text = (
             "🎨 *Creative skills — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
+            "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
+            "ℹ️ Creative skills sessions are offered as part of our Summer & Winter Camps.\n\n"
+            "📞 Contact us for the next camp schedule:\n"
+            "*+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_creative" and branch == "dso":
+        text = (
+            "🎨 *Creative skills — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
+            "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
+            "ℹ️ Creative skills sessions are offered as part of our Summer & Winter Camps.\n\n"
+            "📞 Contact us for the next camp schedule:\n"
+            "*+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_creative" and branch == "jadaf":
+        text = (
+            "🎨 *Creative skills — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
+            "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
+            "ℹ️ Creative skills sessions are offered as part of our Summer & Winter Camps.\n\n"
+            "📞 Contact us for the next camp schedule:\n"
+            "*+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_creative" and branch == "online":
+        text = (
+            "🎨 *Creative skills — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
             "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
@@ -1078,6 +1605,63 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
+    if course_id == "cs_science_exp" and branch == "dso":
+        text = (
+            "⚗️ *Live science experiments — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 10 years and above\n"
+            "⏱ Duration: Min 12 hours per level\n\n"
+            "Exciting hands-on experiments introducing children to the fascinating world of science. "
+            "Students explore scientific concepts by observing, experimenting & understanding "
+            "the 'why' behind everyday phenomena.\n\n"
+            "ℹ️ Also offered as complimentary enrichment for Academic Support Science students.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 600 + VAT per level\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_science_exp" and branch == "jadaf":
+        text = (
+            "⚗️ *Live science experiments — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 10 years and above\n"
+            "⏱ Duration: Min 12 hours per level\n\n"
+            "Exciting hands-on experiments introducing children to the fascinating world of science. "
+            "Students explore scientific concepts by observing, experimenting & understanding "
+            "the 'why' behind everyday phenomena.\n\n"
+            "ℹ️ Also offered as complimentary enrichment for Academic Support Science students.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 500 + VAT per level\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_science_exp" and branch == "online":
+        text = (
+            "⚗️ *Live science experiments — Online*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 10 years and above\n"
+            "⏱ Duration: Min 12 hours per level\n\n"
+            "Exciting hands-on experiments introducing children to the fascinating world of science. "
+            "Students explore scientific concepts by observing, experimenting & understanding "
+            "the 'why' behind everyday phenomena.\n\n"
+            "ℹ️ Also offered as complimentary enrichment for Academic Support Science students.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 600 + VAT per level\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "cs_msoffice" and branch == "ic":
         text = (
             "💾 *MS Office (Beginner/Inter) — International City*\n"
@@ -1097,11 +1681,118 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
-    # ── LANGUAGE TRAINING COURSES (IC) ──
+    if course_id == "cs_msoffice" and branch == "dso":
+        text = (
+            "💾 *MS Office (Beginner/Inter) — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 9 years and above\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Microsoft Word • PowerPoint • Excel\n\n"
+            "Students learn to create documents, presentations & spreadsheets. "
+            "Also includes introduction to AI tools for learning & creativity.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Practical Word/Excel/PowerPoint skills • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_msoffice" and branch == "jadaf":
+        text = (
+            "💾 *MS Office (Beginner/Inter) — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 9 years and above\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Microsoft Word • PowerPoint • Excel\n\n"
+            "Students learn to create documents, presentations & spreadsheets. "
+            "Also includes introduction to AI tools for learning & creativity.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 100 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Practical Word/Excel/PowerPoint skills • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "cs_msoffice" and branch == "online":
+        text = (
+            "💾 *MS Office (Beginner/Inter) — Online*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 9 years and above\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Microsoft Word • PowerPoint • Excel\n\n"
+            "Students learn to create documents, presentations & spreadsheets. "
+            "Also includes introduction to AI tools for learning & creativity.\n\n"
+            "💰 *Fees:*\n"
+            "• Registration Fee: AED 150 + VAT (one-time)\n"
+            "• Course Fee: AED 1,000 + VAT per level\n\n"
+            "📦 Includes: Practical Word/Excel/PowerPoint skills • Educatia Certificate • KHDA Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "lt_eng_beg" and branch == "ic":
         text = (
             "🗣 *English communication — Beginner/Inter*\n"
             "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 5 years and above\n"
+            "⏱ Duration: Min 36 hours per level\n\n"
+            "Helps early learners build confidence in speaking, improve vocabulary "
+            "& develop clear sentence formation through age-appropriate activities.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_eng_beg" and branch == "dso":
+        text = (
+            "🗣 *English communication — Beginner/Inter*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 5 years and above\n"
+            "⏱ Duration: Min 36 hours per level\n\n"
+            "Helps early learners build confidence in speaking, improve vocabulary "
+            "& develop clear sentence formation through age-appropriate activities.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_eng_beg" and branch == "jadaf":
+        text = (
+            "🗣 *English communication — Beginner/Inter*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 5 years and above\n"
+            "⏱ Duration: Min 36 hours per level\n\n"
+            "Helps early learners build confidence in speaking, improve vocabulary "
+            "& develop clear sentence formation through age-appropriate activities.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_eng_beg" and branch == "online":
+        text = (
+            "🗣 *English communication — Beginner/Inter*\n"
+            "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 5 years and above\n"
             "⏱ Duration: Min 36 hours per level\n\n"
@@ -1132,9 +1823,108 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
+    if course_id == "lt_eng_int" and branch == "dso":
+        text = (
+            "🗣 *English Communication — Intermediate*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Builds on foundational English skills — speaking, vocabulary, sentence formation, "
+            "grammar & listening in a supportive and engaging environment.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_eng_int" and branch == "jadaf":
+        text = (
+            "🗣 *English Communication — Intermediate*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Builds on foundational English skills — speaking, vocabulary, sentence formation, "
+            "grammar & listening in a supportive and engaging environment.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_eng_int" and branch == "online":
+        text = (
+            "🗣 *English Communication — Intermediate*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Builds on foundational English skills — speaking, vocabulary, sentence formation, "
+            "grammar & listening in a supportive and engaging environment.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "lt_phonics" and branch == "ic":
         text = (
             "🔤 *Phonics Classes — International City*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 5 years and above\n"
+            "⏱ Duration: Min 36 hours per level\n\n"
+            "Systematic sound-based learning — letter sounds, blending techniques, "
+            "word formation & reading strategies. Builds a strong foundation in English.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_phonics" and branch == "dso":
+        text = (
+            "🔤 *Phonics Classes — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 5 years and above\n"
+            "⏱ Duration: Min 36 hours per level\n\n"
+            "Systematic sound-based learning — letter sounds, blending techniques, "
+            "word formation & reading strategies. Builds a strong foundation in English.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_phonics" and branch == "jadaf":
+        text = (
+            "🔤 *Phonics Classes — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 5 years and above\n"
+            "⏱ Duration: Min 36 hours per level\n\n"
+            "Systematic sound-based learning — letter sounds, blending techniques, "
+            "word formation & reading strategies. Builds a strong foundation in English.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_phonics" and branch == "online":
+        text = (
+            "🔤 *Phonics Classes — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
             "👦👧 Age Group: 5 years and above\n"
             "⏱ Duration: Min 36 hours per level\n\n"
@@ -1165,6 +1955,57 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
+    if course_id == "lt_pubspeak" and branch == "dso":
+        text = (
+            "🎤 *Public speaking and Creative writing*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 years and above\n"
+            "⏱ Duration: Min 16 hours per level\n\n"
+            "Helps children express thoughts confidently & creatively through storytelling, "
+            "writing exercises & speaking practices. Develop communication, vocabulary & confidence.\n\n"
+            "💰 *Course Fee: AED 950 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_pubspeak" and branch == "jadaf":
+        text = (
+            "🎤 *Public speaking and Creative writing*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 years and above\n"
+            "⏱ Duration: Min 16 hours per level\n\n"
+            "Helps children express thoughts confidently & creatively through storytelling, "
+            "writing exercises & speaking practices. Develop communication, vocabulary & confidence.\n\n"
+            "💰 *Course Fee: AED 900 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_pubspeak" and branch == "online":
+        text = (
+            "🎤 *Public speaking and Creative writing*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 8 years and above\n"
+            "⏱ Duration: Min 16 hours per level\n\n"
+            "Helps children express thoughts confidently & creatively through storytelling, "
+            "writing exercises & speaking practices. Develop communication, vocabulary & confidence.\n\n"
+            "💰 *Course Fee: AED 950 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
     if course_id == "lt_arabic_rw" and branch == "ic":
         text = (
             "🌙 *Arabic reading and writing skills — International City*\n"
@@ -1181,8 +2022,548 @@ def show_course_detail(to, course_id, branch, category):
         send_text(to, text)
         return
 
-    # ── ALL OTHER COURSES (DSO/Jadaf/Online or unspecified) → generic info + contact ---
-    course_names = {
+    if course_id == "lt_arabic_rw" and branch == "dso":
+        text = (
+            "🌙 *Arabic reading and writing skills — Dubai Silicon Oasis*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Learn Arabic alphabets, correct pronunciation, reading techniques & writing skills. "
+            "Structured and practical lessons for school-going children.\n\n"
+            "💰 *Course Fee: AED 1,270 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_arabic_rw" and branch == "jadaf":
+        text = (
+            "🌙 *Arabic reading and writing skills — Al Jadaf*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Learn Arabic alphabets, correct pronunciation, reading techniques & writing skills. "
+            "Structured and practical lessons for school-going children.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_arabic_rw" and branch == "online":
+        text = (
+            "🌙 *Arabic reading and writing skills — Online*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: 6 years and above\n"
+            "⏱ Duration: Min 24 hours per level\n\n"
+            "Learn Arabic alphabets, correct pronunciation, reading techniques & writing skills. "
+            "Structured and practical lessons for school-going children.\n\n"
+            "💰 *Course Fee: AED 1,270 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_eng_basic" and branch == "ic":
+        text = (
+            "🗣 *English communication Beginner/Elementary*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 36 hours per level (3 months)\n\n"
+            "Develop confidence, clarity, and fluency in spoken and written English. "
+            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_eng_basic" and branch == "dso":
+        text = (
+            "🗣 *English communication Beginner/Elementary*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 36 hours per level (3 months)\n\n"
+            "Develop confidence, clarity, and fluency in spoken and written English. "
+            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
+            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_eng_basic" and branch == "jadaf":
+        text = (
+            "🗣 *English communication Beginner/Elementary*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 36 hours per level (3 months)\n\n"
+            "Develop confidence, clarity, and fluency in spoken and written English. "
+            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_eng_basic" and branch == "online":
+        text = (
+            "🗣 *English communication Beginner/Elementary*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 36 hours per level (3 months)\n\n"
+            "Develop confidence, clarity, and fluency in spoken and written English. "
+            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
+            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_eng_adv" and branch == "ic":
+        text = (
+            "🗣 *English communication PreInter/Inter/Upper/Advanced*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 24 hours per level (3 months)\n\n"
+            "Develop confidence, clarity, and fluency in spoken and written English. "
+            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_eng_adv" and branch == "dso":
+        text = (
+            "🗣 *English communication PreInter/Inter/Upper/Advanced*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 24 hours per level (3 months)\n\n"
+            "Develop confidence, clarity, and fluency in spoken and written English. "
+            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
+            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_eng_adv" and branch == "jadaf":
+        text = (
+            "🗣 *English communication PreInter/Inter/Upper/Advanced*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 24 hours per level (3 months)\n\n"
+            "Develop confidence, clarity, and fluency in spoken and written English. "
+            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_eng_adv" and branch == "online":
+        text = (
+            "🗣 *English communication PreInter/Inter/Upper/Advanced*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 24 hours per level (3 months)\n\n"
+            "Develop confidence, clarity, and fluency in spoken and written English. "
+            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
+            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_arabic" and branch == "ic":
+        text = (
+            "🌙 *Spoken Arabic Beginner/ Inter/Advanced*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Develop strong skills in reading, writing, speaking, and understanding Arabic. "
+            "Focuses on vocabulary, correct pronunciation, and practical communication.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_arabic" and branch == "dso":
+        text = (
+            "🌙 *Spoken Arabic Beginner/ Inter/Advanced*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Develop strong skills in reading, writing, speaking, and understanding Arabic. "
+            "Focuses on vocabulary, correct pronunciation, and practical communication.\n\n"
+            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_arabic" and branch == "jadaf":
+        text = (
+            "🌙 *Spoken Arabic Beginner/ Inter/Advanced*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Develop strong skills in reading, writing, speaking, and understanding Arabic. "
+            "Focuses on vocabulary, correct pronunciation, and practical communication.\n\n"
+            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_arabic" and branch == "online":
+        text = (
+            "🌙 *Spoken Arabic Beginner/ Inter/Advanced*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Develop strong skills in reading, writing, speaking, and understanding Arabic. "
+            "Focuses on vocabulary, correct pronunciation, and practical communication.\n\n"
+            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_ielts" and branch == "ic":
+        text = (
+            "🎓 *IELTS Academic/General*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: 20 hrs instructor-led + 10 hrs self-practice\n\n"
+            "Focused training in Listening, Reading, Writing, and Speaking skills, "
+            "along with exam strategies and practice tests for desired band score.\n\n"
+            "💰 *Course Fee: AED 1,420 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_ielts" and branch == "dso":
+        text = (
+            "🎓 *IELTS Academic/General*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: 20 hrs instructor-led + 10 hrs self-practice\n\n"
+            "Focused training in Listening, Reading, Writing, and Speaking skills, "
+            "along with exam strategies and practice tests for desired band score.\n\n"
+            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_ielts" and branch == "jadaf":
+        text = (
+            "🎓 *IELTS Academic/General*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: 20 hrs instructor-led + 10 hrs self-practice\n\n"
+            "Focused training in Listening, Reading, Writing, and Speaking skills, "
+            "along with exam strategies and practice tests for desired band score.\n\n"
+            "💰 *Course Fee: AED 1,420 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_ielts" and branch == "online":
+        text = (
+            "🎓 *IELTS Academic/General*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: 20 hrs instructor-led + 10 hrs self-practice\n\n"
+            "Focused training in Listening, Reading, Writing, and Speaking skills, "
+            "along with exam strategies and practice tests for desired band score.\n\n"
+            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_excel" and branch == "ic":
+        text = (
+            "📊 *Professional Excel Skills for Adults*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Enhance efficiency and confidence in using Microsoft Excel for workplace needs. "
+            "Covers essential to advanced tools, formulas, data management & reporting.\n\n"
+            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_excel" and branch == "dso":
+        text = (
+            "📊 *Professional Excel Skills for Adults*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Enhance efficiency and confidence in using Microsoft Excel for workplace needs. "
+            "Covers essential to advanced tools, formulas, data management & reporting.\n\n"
+            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_excel" and branch == "jadaf":
+        text = (
+            "📊 *Professional Excel Skills for Adults*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Enhance efficiency and confidence in using Microsoft Excel for workplace needs. "
+            "Covers essential to advanced tools, formulas, data management & reporting.\n\n"
+            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_excel" and branch == "online":
+        text = (
+            "📊 *Professional Excel Skills for Adults*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: Min 20 hours per level\n\n"
+            "Enhance efficiency and confidence in using Microsoft Excel for workplace needs. "
+            "Covers essential to advanced tools, formulas, data management & reporting.\n\n"
+            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_python" and branch == "ic":
+        text = (
+            "💻 *Python coding Language*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: 20 hours per level\n\n"
+            "Learn Python fundamentals, problem-solving, data handling, and app development. "
+            "Build confidence in coding and explore automation & data analysis.\n\n"
+            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_python" and branch == "dso":
+        text = (
+            "💻 *Python coding Language*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: 20 hours per level\n\n"
+            "Learn Python fundamentals, problem-solving, data handling, and app development. "
+            "Build confidence in coding and explore automation & data analysis.\n\n"
+            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_python" and branch == "jadaf":
+        text = (
+            "💻 *Python coding Language*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: 20 hours per level\n\n"
+            "Learn Python fundamentals, problem-solving, data handling, and app development. "
+            "Build confidence in coding and explore automation & data analysis.\n\n"
+            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_python" and branch == "online":
+        text = (
+            "💻 *Python coding Language*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "👦👧 Age Group: All ages\n"
+            "⏱ Duration: 20 hours per level\n\n"
+            "Learn Python fundamentals, problem-solving, data handling, and app development. "
+            "Build confidence in coding and explore automation & data analysis.\n\n"
+            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n"
+            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_grw" and branch == "ic":
+        text = (
+            "💼 *Get Ready To Work (MS Office + AI training)*\n"
+            "📍 International City\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "⏱ Duration: 20 hours per level\n\n"
+            "Equip yourself with essential computer and digital skills for the workplace. "
+            "Gain experience in MS Office tools, AI apps, email, and digital skills.\n\n"
+            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_grw" and branch == "dso":
+        text = (
+            "💼 *Get Ready To Work (MS Office + AI training)*\n"
+            "📍 Dubai Silicon Oasis\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "⏱ Duration: 20 hours per level\n\n"
+            "Equip yourself with essential computer and digital skills for the workplace. "
+            "Gain experience in MS Office tools, AI apps, email, and digital skills.\n\n"
+            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_grw" and branch == "jadaf":
+        text = (
+            "💼 *Get Ready To Work (MS Office + AI training)*\n"
+            "📍 Al Jadaf\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "⏱ Duration: 20 hours per level\n\n"
+            "Equip yourself with essential computer and digital skills for the workplace. "
+            "Gain experience in MS Office tools, AI apps, email, and digital skills.\n\n"
+            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "a_grw" and branch == "online":
+        text = (
+            "💼 *Get Ready To Work (MS Office + AI training)*\n"
+            "🌐 Online Classes\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+            "⏱ Duration: 20 hours per level\n\n"
+            "Equip yourself with essential computer and digital skills for the workplace. "
+            "Gain experience in MS Office tools, AI apps, email, and digital skills.\n\n"
+            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
+            "(Includes class fees, registration & material fees)\n\n"
+            "📞 Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+
+        course_names = {
         "as_lang": "Languages — Academic Support",
         "as_math": "Mathematics — Academic Support",
         "as_science": "Science — Academic Support",
