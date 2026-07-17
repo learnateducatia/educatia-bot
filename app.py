@@ -209,35 +209,6 @@ def show_main_menu(to):
 # FLOW: BRANCH SELECTION
 # =============================================
 
-def show_branch_buttons(to, category):
-    """3-button branch picker (Summer Camp / STEM Camp — no online)."""
-    set_session(to, {"step": "select_branch", "category": category})
-
-    if category == "summer_camp":
-        label = "☀️ *Summer Camp 2026*"
-    else:
-        label = "🔬 *STEM Camp 2026*"
-
-    body = (
-        f"{label}\n\n"
-        "Available at all three branches!\n"
-        "Which branch? Tap below or reply:\n\n"
-        "1️⃣ International City\n"
-        "2️⃣ Dubai Silicon Oasis\n"
-        "3️⃣ Al Jadaf"
-    )
-
-    send_buttons(
-        to,
-        body,
-        [
-            {"id": "branch_ic", "title": "International City"},
-            {"id": "branch_dso", "title": "Dubai Silicon Oasis"},
-            {"id": "branch_jadaf", "title": "Al Jadaf"},
-        ],
-    )
-
-
 def show_branch_list(to, category):
     """4-option branch picker (Academic / Adult — includes Online)."""
     set_session(to, {"step": "select_branch", "category": category})
@@ -275,252 +246,6 @@ def show_branch_list(to, category):
         }
     ]
     send_list(to, body, "Choose Location", sections)
-
-
-# =============================================
-# FLOW: SUMMER CAMP (per branch)
-# =============================================
-
-def show_summer_camp(to, branch):
-    set_session(to, {"step": "viewing", "category": "summer_camp", "branch": branch})
-
-    common_activities = (
-        "🎨 *Activities include:*\n"
-        "Zumba, yoga, day outing, science experiments, cooking fun, "
-        "carnival, creative crafts, games, movie time and much more!\n\n"
-        "🌞 A safe and joyful environment where kids learn, explore, and grow!\n\n"
-        "⭐ *Early Bird Discount: AED 100 off!*\n\n"
-        "🌟 *Limited seats available – Enroll now!*\n"
-        "📞 Contact: +971 50 460 5940\n\n"
-        "Reply *menu* to go back 🔙"
-    )
-
-    if branch == "ic":
-        text = (
-            "🌟 *Educatia's Summer Camp 2026 — International City* 🌟\n\n"
-            "📅 Duratio: July 6th – August 28th, 2026\n"
-            "👧🧒 Age Group: 5 – 16 Years\n"
-            "🗓 Days: Monday to Friday\n"
-            "🏫 Mode: Physical Camp\n\n"
-            "🕘 *Timings:*\n"
-            "• Monday to Friday: 10:00 AM – 1:00 PM\n\n"
-            "💰 *Fees:*\n"
-            "• Per Week: AED 350 + VAT\n"
-            "• 4 Weeks: AED 1,200 + VAT (Incl. Materials & Day Trip)\n"
-            "• 6 Weeks: AED 1,700 + VAT (Incl. Materials & Day Trip)\n"
-            "• 8 Weeks: AED 2,200 + VAT (Incl. Materials & Day Trip)\n"
-            "• 🚌 Transportation: Additional charges apply\n\n"
-            "📍 *Location:* V17 Shop No 4, Russia Cluster, International City, Dubai\n\n"
-            + common_activities
-        )
-    elif branch == "dso":
-        text = (
-            "🌟 *Educatia's Summer Camp 2026 — Dubai Silicon Oasis* 🌟\n\n"
-            "📅 Duration: July 6th – August 28th, 2026\n"
-            "👧🧒 Age Group: 5 – 16 Years\n"
-            "🗓 Days: Monday to Friday\n"
-            "🏫 Mode: Physical Camp\n\n"
-            "🕘 *Timings:*\n"
-            "• Monday to Friday: 10:00 AM – 1:00 PM\n\n"
-            "💰 *Fees:*\n"
-            "• Per Week: AED 400 + VAT\n"
-            "• 4 Weeks: AED 1,400 + VAT (Incl. Materials & Day Trip)\n"
-            "• 6 Weeks: AED 2,000 + VAT (Incl. Materials & Day Trip)\n"
-            "• 8 Weeks: AED 2,600 + VAT (Incl. Materials & Day Trip)\n"
-            "• 🚌 Transportation: Additional charges apply\n\n"
-            "📍 *Location:* Park Avenue 607, Dubai Silicon Oasis\n\n"
-            + common_activities
-        )
-    elif branch == "jadaf":
-        text = (
-            "🌟 *Educatia's Summer Camp 2026 — Al Jadaf* 🌟\n\n"
-            "📅 Duration: July 6th – August 28th, 2026\n"
-            "👧🧒 Age Group: 5 – 16 Years\n"
-            "🗓 Days: Monday to Friday\n"
-            "🏫 Mode: Physical Camp\n\n"
-            "🕘 *Timings:*\n"
-            "• Monday to Friday: 10:00 AM – 1:00 PM\n\n"
-            "💰 *Fees:*\n"
-            "• Per Week: AED 500 + VAT\n"
-            "• 4 Weeks: AED 1,500 + VAT (Incl. Materials & Day Trip)\n"
-            "• 6 Weeks: AED 2,200 + VAT (Incl. Materials & Day Trip)\n"
-            "• 8 Weeks: AED 2,800 + VAT (Incl. Materials & Day Trip)\n\n"
-            "📍 *Location:* Nastaran Building, Next to Riah Tower, Al Jadaf – Jaddaf Waterfront, Dubai – Office 503\n\n"
-            + common_activities
-        )
-    else:
-        text = "Summer Camp is only available at our physical branches. Reply *menu* to go back 🔙"
-
-    send_text(to, text)
-
-
-# =============================================
-# FLOW: STEM CAMP — AGE SELECTION
-# =============================================
-
-def show_stem_age_selection(to, branch):
-    set_session(to, {"step": "select_age", "category": "stem_camp", "branch": branch})
-    send_buttons(
-        to,
-        (
-            "🔬 *STEM Camp 2026*\n\n"
-            "We have two age-group programs.\n"
-            "Tap below or reply:\n\n"
-            "1️⃣ Ages 8–11 (STEM Explorers)\n"
-            "2️⃣ Ages 12–17 (Teens)"
-        ),
-        [
-            {"id": "age_8_11", "title": "Ages 8–11"},
-            {"id": "age_12_17", "title": "Ages 12–17"},
-        ],
-    )
-
-
-# =============================================
-# FLOW: STEM CAMP JUNIOR (8–11) per branch
-# =============================================
-
-def show_stem_junior(to, branch):
-    set_session(to, {"step": "viewing", "category": "stem_junior", "branch": branch})
-
-    common_desc = (
-        "👩‍🔬 Hands-on experiments\n"
-        "🤖 Beginner-friendly robotics\n"
-        "🧩 Cool projects & team challenges\n"
-        "🌟 No experience needed – just curiosity!\n\n"
-        "📖 *Curriculum:*\n"
-        "• Micro:bit and Scratch coding (10 classes)\n"
-        "• Arduino programming (hardware & software)\n"
-        "• Introduction to Data Science, AI & Machine Learning\n\n"
-    )
-
-    common_footer = (
-        "🔗 *Register now & spark a love for innovation!*\n"
-        "📞 Contact: +971 50 460 5940\n\n"
-        "Reply *menu* to go back 🔙"
-    )
-
-    if branch == "ic":
-        text = (
-            "🔬 *STEM Camp — STEM Explorers (Ages 8–11)*\n"
-            "📍 *International City*\n\n"
-            + common_desc
-            + "🗓 Start Date: 6th July 2026\n"
-            "🕰 Timings:\n"
-            "• Mon–Thu: 10:00 AM – 1:00 PM\n"
-            "• Friday: 10:00 AM – 12:00 PM\n\n"
-            "💰 *Fees:*\n"
-            "• 1 Week: AED 350 + VAT\n"
-            "• 4 Weeks: AED 1,200 + VAT\n"
-            "📦 Kit Charges: AED 250 + VAT\n\n"
-            "📍 V17 Shop No 4, Russia Cluster, International City, Dubai\n\n"
-            + common_footer
-        )
-    elif branch == "dso":
-        text = (
-            "🔬 *STEM Camp — STEM Explorers (Ages 8–11)*\n"
-            "📍 *Dubai Silicon Oasis*\n\n"
-            + common_desc
-            + "🗓 Start Date: 6th July 2026\n"
-            "🕰 Timings: 2:00 PM – 5:00 PM\n\n"
-            "💰 *Fees:*\n"
-            "• 1 Week: AED 400 + VAT\n"
-            "• 4 Weeks: AED 1,400 + VAT\n"
-            "📦 Kit Charges: AED 250 + VAT\n\n"
-            "📍 Park Avenue 607, Dubai Silicon Oasis\n\n"
-            + common_footer
-        )
-    elif branch == "jadaf":
-        text = (
-            "🔬 *STEM Camp — STEM Explorers (Ages 8–11)*\n"
-            "📍 *Al Jadaf*\n\n"
-            + common_desc
-            + "🗓 Start Date: 6th July 2026\n\n"
-            "💰 *Fees:*\n"
-            "• 1 Week: AED 500 + VAT\n"
-            "• 4 Weeks: AED 1,600 + VAT\n"
-            "📦 Kit Charges: AED 300 + VAT\n\n"
-            "📍 Nastaran Building, Next to Riah Tower, Al Jadaf, Dubai – Office 503\n\n"
-            + common_footer
-        )
-    else:
-        text = "STEM Camp is only available at our physical branches. Reply *menu* to go back 🔙"
-
-    send_text(to, text)
-
-
-# =============================================
-# FLOW: STEM CAMP TEENS (12–17) per branch
-# =============================================
-
-def show_stem_teen(to, branch):
-    set_session(to, {"step": "viewing", "category": "stem_teen", "branch": branch})
-
-    common_desc = (
-        "Get ready to dive into a world of innovation, creativity, and discovery! "
-        "Our STEM camp is the ultimate playground for curious minds who love to explore "
-        "how things work and dream of building what's next.\n\n"
-        "📖 *Curriculum:*\n"
-        "• Arduino programming (without & with sensors)\n"
-        "• Obstacle avoidance & Logic Gates\n"
-        "• IoT projects (for advanced learners)\n"
-        "• AI & Machine Learning introduction\n\n"
-    )
-
-    common_footer = (
-        "📦 *Optional Kit Charges:*\n"
-        "• Arduino Starter Kit: AED 200\n"
-        "• Sensor Kit: AED 100\n"
-        "• Chassis Kit: AED 100\n\n"
-        "🎁 *Refer a friend and get more discount!*\n\n"
-        "📞 Contact: +971 50 460 5940\n\n"
-        "Reply *menu* to go back 🔙"
-    )
-
-    if branch == "ic":
-        text = (
-            "💫 *STEM Camp for Teens (Ages 12–17)*\n"
-            "📍 *International City*\n\n"
-            + common_desc
-            + "🗓 Start Date: 6th July 2026\n"
-            "🕰 Timings:\n"
-            "• Mon–Thu: 10:00 AM – 1:00 PM\n"
-            "• Friday: 10:00 AM – 12:00 PM\n\n"
-            "💰 *Fees:*\n"
-            "• 1 Week: AED 500 + VAT\n"
-            "• 4 Weeks: AED 1,800 + VAT\n\n"
-            "📍 V17 Shop No 4, Russia Cluster, International City, Dubai\n\n"
-            + common_footer
-        )
-    elif branch == "dso":
-        text = (
-            "💫 *STEM Camp for Teens (Ages 12–17)*\n"
-            "📍 *Dubai Silicon Oasis*\n\n"
-            + common_desc
-            + "🗓 Start Date: 6th July 2026\n"
-            "🕰 Timings: 2:00 PM – 5:00 PM\n\n"
-            "💰 *Fees:*\n"
-            "• 1 Week: AED 500 + VAT\n"
-            "• 4 Weeks: AED 1,800 + VAT\n\n"
-            "📍 Park Avenue 607, Dubai Silicon Oasis\n\n"
-            + common_footer
-        )
-    elif branch == "jadaf":
-        text = (
-            "💫 *STEM Camp for Teens (Ages 12–17)*\n"
-            "📍 *Al Jadaf*\n\n"
-            + common_desc
-            + "🗓 Start Date: 6th July 2026\n\n"
-            "💰 *Fees:*\n"
-            "• 1 Week: AED 600 + VAT\n"
-            "• 4 Weeks: AED 2,200 + VAT\n\n"
-            "📍 Nastaran Building, Next to Riah Tower, Al Jadaf, Dubai – Office 503\n\n"
-            + common_footer
-        )
-    else:
-        text = "STEM Camp is only available at our physical branches. Reply *menu* to go back 🔙"
-
-    send_text(to, text)
 
 
 # =============================================
@@ -1154,15 +879,21 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🔢 *Abacus — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 to 10 years\n"
-            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
-            "Develop strong mental arithmetic skills through bead-based calculations. "
-            "Students learn addition, subtraction, multiplication & division, "
-            "progressing to fast mental calculations.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT\n\n"
-            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📌 Age Group: 6 to 10 years 👦👧\n"
+            "⏳ Duration: 3 months (24 classes, 1 hour each)\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Abacus Course is designed to develop strong mental arithmetic skills while enhancing concentration, memory, and logical thinking through the proven technique of bead-based calculations.\n"
+            "Students learn to perform rapid ➕ addition, ➖ subtraction, ✖ multiplication, and ➗ division using the abacus 🧮, gradually progressing to fast and accurate mental calculations without the need for the physical tool.\n\n"
+            "💰 Registration Fee: AED 100 + VAT (one-time)\n"
+            "💰 Course Fee: AED 1,000 + VAT\n\n"
+            "🎁 Course Includes\n"
+            "• 📚 Course Books\n"
+            "• 📝 Practice Worksheets\n"
+            "• 📊 Mock Tests\n"
+            "• 💻 E-Books\n"
+            "• 🏅 Certificate issued by the Indian Institute of Vedic Maths and Abacus (IIVA)\n"
+            "📈 Levels: Multiple levels are available based on the child's age and prior knowledge, ensuring a personalized learning journey.\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1173,15 +904,21 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🔢 *Abacus — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 to 10 years\n"
-            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
-            "Develop strong mental arithmetic skills through bead-based calculations. "
-            "Students learn addition, subtraction, multiplication & division, "
-            "progressing to fast mental calculations.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT\n\n"
-            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📌 Age Group: 6 to 10 years 👦👧\n"
+            "⏳ Duration: 3 months (24 classes, 1 hour each)\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Abacus Course is designed to develop strong mental arithmetic skills while enhancing concentration, memory, and logical thinking through the proven technique of bead-based calculations.\n"
+            "Students learn to perform rapid ➕ addition, ➖ subtraction, ✖ multiplication, and ➗ division using the abacus 🧮, gradually progressing to fast and accurate mental calculations without the need for the physical tool.\n\n"
+            "🎁 Course Includes\n"
+            "• 📚 Course Books\n"
+            "• 📝 Practice Worksheets\n"
+            "• 📊 Mock Tests\n"
+            "• 💻 E-Books\n"
+            "• 🏅 Certificate issued by the Indian Institute of Vedic Maths and Abacus (IIVA)\n"
+            "📈 Levels: Multiple levels are available based on the child's age and prior knowledge, ensuring a personalized learning journey.\n"
+            "💰 Registration Fee: AED 150 + VAT (one-time)\n"
+            "💰 Course Fee: AED 1,000 + VAT\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1192,15 +929,21 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🔢 *Abacus — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 to 10 years\n"
-            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
-            "Develop strong mental arithmetic skills through bead-based calculations. "
-            "Students learn addition, subtraction, multiplication & division, "
-            "progressing to fast mental calculations.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT\n\n"
-            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📌 Age Group: 6 to 10 years 👦👧\n"
+            "⏳ Duration: 3 months (24 classes, 1 hour each)\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Abacus Course is designed to develop strong mental arithmetic skills while enhancing concentration, memory, and logical thinking through the proven technique of bead-based calculations.\n"
+            "Students learn to perform rapid ➕ addition, ➖ subtraction, ✖ multiplication, and ➗ division using the abacus 🧮, gradually progressing to fast and accurate mental calculations without the need for the physical tool.\n\n"
+            "🎁 Course Includes\n"
+            "• 📚 Course Books\n"
+            "• 📝 Practice Worksheets\n"
+            "• 📊 Mock Tests\n"
+            "• 💻 E-Books\n"
+            "• 🏅 Certificate issued by the Indian Institute of Vedic Maths and Abacus (IIVA)\n"
+            "📈 Levels: Multiple levels are available based on the child's age and prior knowledge, ensuring a personalized learning journey.\n"
+            "💰 Registration Fee: AED 150 + VAT (one-time)\n"
+            "💰 Course Fee: AED 1,500 + VAT\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1211,16 +954,10 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🔢 *Abacus — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 to 10 years\n"
-            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
-            "Develop strong mental arithmetic skills through bead-based calculations. "
-            "Students learn addition, subtraction, multiplication & division, "
-            "progressing to fast mental calculations.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT\n\n"
-            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "📖 Course Description\n"
+            "Develop strong mental calculation skills, concentration, memory, and number sense through structured Abacus training. The course helps children improve speed, accuracy, and confidence in mathematics through fun and interactive activities. Our Abacus courses are certified from Indian Institute of Abacus and Vedic maths (IIVA).\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -1230,14 +967,20 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🧮 *Vedic Maths — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 to 16 years\n"
-            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
-            "Powerful calculation techniques making maths faster, simpler & more accurate. "
-            "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT\n\n"
-            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📌 Age Group: 8 to 16 years 👦👧\n"
+            "⏳ Duration: 3 months (24 classes, 1 hour each)\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Vedic Maths Course introduces students to powerful calculation techniques that make solving mathematical problems faster, simpler, and more accurate. Through easy-to-learn strategies, students improve their speed, accuracy, logical thinking, and confidence in Mathematics, making everyday calculations and competitive exam preparation more efficient.\n\n"
+            "💰 Registration Fee: AED 100 + VAT (one-time)\n"
+            "💰 Course Fee: AED 1,000 + VAT\n\n"
+            "🎁 Course Includes\n"
+            "• 📚 Course Books\n"
+            "• 📝 Practice Worksheets\n"
+            "• 📊 Mock Tests\n"
+            "• 💻 E-Books\n"
+            "• 🏅 Certificate issued by the Indian Institute of Vedic Maths and Abacus (IIVA)\n"
+            "📈 Levels: Multiple levels are available based on the child's age and prior knowledge, ensuring a personalized learning journey.\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1248,14 +991,20 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🧮 *Vedic Maths — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 to 16 years\n"
-            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
-            "Powerful calculation techniques making maths faster, simpler & more accurate. "
-            "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT\n\n"
-            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📌 Age Group: 8 to 16 years 👦👧\n"
+            "⏳ Duration: 3 months (24 classes, 1 hour each)\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Vedic Maths Course introduces students to powerful calculation techniques that make solving mathematical problems faster, simpler, and more accurate. Through easy-to-learn strategies, students improve their speed, accuracy, logical thinking, and confidence in Mathematics, making everyday calculations and competitive exam preparation more efficient.\n\n"
+            "🎁 Course Includes\n"
+            "• 📚 Course Books\n"
+            "• 📝 Practice Worksheets\n"
+            "• 📊 Mock Tests\n"
+            "• 💻 E-Books\n"
+            "• 🏅 Certificate issued by the Indian Institute of Vedic Maths and Abacus (IIVA)\n"
+            "📈 Levels: Multiple levels are available based on the child's age and prior knowledge, ensuring a personalized learning journey.\n"
+            "💰 Registration Fee: AED 150 + VAT (one-time)\n"
+            "💰 Course Fee: AED 1,000 + VAT\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1266,14 +1015,20 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🧮 *Vedic Maths — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 to 16 years\n"
-            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
-            "Powerful calculation techniques making maths faster, simpler & more accurate. "
-            "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT\n\n"
-            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
+            "📌 Age Group: 8 to 16 years 👦👧\n"
+            "⏳ Duration: 3 months (24 classes, 1 hour each)\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Vedic Maths Course introduces students to powerful calculation techniques that make solving mathematical problems faster, simpler, and more accurate. Through easy-to-learn strategies, students improve their speed, accuracy, logical thinking, and confidence in Mathematics, making everyday calculations and competitive exam preparation more efficient.\n\n"
+            "🎁 Course Includes\n"
+            "• 📚 Course Books\n"
+            "• 📝 Practice Worksheets\n"
+            "• 📊 Mock Tests\n"
+            "• 💻 E-Books\n"
+            "• 🏅 Certificate issued by the Indian Institute of Vedic Maths and Abacus (IIVA)\n"
+            "📈 Levels: Multiple levels are available based on the child's age and prior knowledge, ensuring a personalized learning journey.\n"
+            "💰 Registration Fee: AED 150 + VAT (one-time)\n"
+            "💰 Course Fee: AED 1,500 + VAT\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1284,15 +1039,10 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🧮 *Vedic Maths — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 to 16 years\n"
-            "⏱ Duration: 3 months | 24 classes | 1 hr each\n\n"
-            "Powerful calculation techniques making maths faster, simpler & more accurate. "
-            "Improve speed, accuracy, logical thinking and confidence in Mathematics.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT\n\n"
-            "📦 Includes: Course Books • Worksheets • Mock Tests • E-Books • IIVA Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "📖 Course Description\n"
+            "Enhance mathematical skills with powerful calculation techniques and shortcuts inspired by Vedic mathematics. Children learn faster problem-solving methods, improve calculation speed, and build greater confidence in handling numbers. Our Vedic Maths courses are certified from Indian Institute of Abacus and Vedic maths (IIVA).\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -1302,16 +1052,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "💻 *Coding for Kids — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 7 years and above\n"
-            "⏱ Duration: Min 18 hours per level\n\n"
-            "Scratch / Python / App Development\n\n"
-            "Introduces children to computational thinking and programming. "
-            "Students learn inputs, outputs, logic, algorithms & problem-solving "
-            "while building essential coding skills for the future.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📌 Age Group: 7 years and above\n"
+            "⏳ Duration: Minimum of 18 hours per level (class frequency and duration vary depending on the season and batch)\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Coding Courses introduce children to the fundamentals of computational thinking and programming through Scratch, Python, and App Development. Students learn how computers and digital systems work by understanding inputs, outputs, logic, algorithms, and problem-solving techniques. The courses encourage creativity, logical reasoning, and innovation while building essential coding skills for the future.\n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "💰 Course Fee: Approximately AED 1,000 + VAT per level.\n"
+            "Registration Fee: AED 100 + VAT (one-time)\n"
+            "🎁 Course Includes\n"
+            "💻 Hands-on coding projects and activities\n"
+            "📚 Learning materials and practice exercises\n"
+            "🏅 Educatia Course Completion Certificate\n"
+            "📜 KHDA Certificate (available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1322,16 +1075,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "💻 *Coding for Kids — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 7 years and above\n"
-            "⏱ Duration: Min 18 hours per level\n\n"
-            "Scratch / Python / App Development\n\n"
-            "Introduces children to computational thinking and programming. "
-            "Students learn inputs, outputs, logic, algorithms & problem-solving "
-            "while building essential coding skills for the future.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📌 Age Group: 7 years and above\n"
+            "⏳ Duration: Minimum of 18 hours per level (class frequency and duration vary depending on the season and batch)\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Coding Courses introduce children to the fundamentals of computational thinking and programming through Scratch, Python, and App Development. Students learn how computers and digital systems work by understanding inputs, outputs, logic, algorithms, and problem-solving techniques. The courses encourage creativity, logical reasoning, and innovation while building essential coding skills for the future.\n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "🎁 Course Includes\n"
+            "💻 Hands-on coding projects and activities\n"
+            "📚 Learning materials and practice exercises\n"
+            "🏅 Educatia Course Completion Certificate\n"
+            "📜 KHDA Certificate (available upon request)\n"
+            "💰 Course Fee: Approximately AED 1,000 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1342,16 +1098,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "💻 *Coding for Kids — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 7 years and above\n"
-            "⏱ Duration: Min 18 hours per level\n\n"
-            "Scratch / Python / App Development\n\n"
-            "Introduces children to computational thinking and programming. "
-            "Students learn inputs, outputs, logic, algorithms & problem-solving "
-            "while building essential coding skills for the future.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📌 Age Group: 7 years and above\n"
+            "⏳ Duration: Minimum of 18 hours per level (class frequency and duration vary depending on the season and batch)\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Coding Courses introduce children to the fundamentals of computational thinking and programming through Scratch, Python, and App Development. Students learn how computers and digital systems work by understanding inputs, outputs, logic, algorithms, and problem-solving techniques. The courses encourage creativity, logical reasoning, and innovation while building essential coding skills for the future.\n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "🎁 Course Includes\n"
+            "💻 Hands-on coding projects and activities\n"
+            "📚 Learning materials and practice exercises\n"
+            "🏅 Educatia Course Completion Certificate\n"
+            "📜 KHDA Certificate (available upon request)\n"
+            "💰 Course Fee: Approximately AED 1,500 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1362,17 +1121,10 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "💻 *Coding for Kids — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 7 years and above\n"
-            "⏱ Duration: Min 18 hours per level\n\n"
-            "Scratch / Python / App Development\n\n"
-            "Introduces children to computational thinking and programming. "
-            "Students learn inputs, outputs, logic, algorithms & problem-solving "
-            "while building essential coding skills for the future.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "📖 Course Description\n"
+            "Introduce children to the world of coding through creative, hands-on learning. Students develop logical thinking, problem-solving skills, and computational thinking while creating animations, games, applications, and real-world projects using age-appropriate programming languages.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -1382,19 +1134,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🤖 *Robotics (Beginner/Inter/Adv) — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "📌 Age Group: 7 years and above \n"
+            "📌 Age Group: 7 years and above\n"
             "⏳ Duration: Minimum of 18 hours per level (class frequency and duration vary depending on the season and batch)\n"
             "📍 Location: International City\n"
             "📖 Course Description\n"
-            "Our Robotics Course helps students understand the interaction between hardware and software through hands-on learning. Students work with microcontrollers like micro and Arduino, learn sensors, inputs, outputs, programming, and debugging techniques to build functional robotic projects while developing problem-solving and engineering skills. \n"
+            "Our Robotics Course helps students understand the interaction between hardware and software through hands-on learning. Students work with microcontrollers like micro and Arduino, learn sensors, inputs, outputs, programming, and debugging techniques to build functional robotic projects while developing problem-solving and engineering skills.\n"
             "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
             "💰 Course Fee: Approximately AED 1,000 + VAT per level.\n"
             "Registration Fee: AED 100 + VAT (one-time)\n"
-            "Course Includes\n"
-            "💻 Hands-on projects and activities\n"
-            "📚 Learning materials and practice exercises\n"
-            "🏅 Educatia Course Completion Certificate\n"
-            "📜 KHDA Certificate (available upon request)\n"
+            "🎁 Course Includes\n"
+            "• 💻 Hands-on projects and activities\n"
+            "• 📚 Learning materials and practice exercises\n"
+            "• 🏅 Educatia Course Completion Certificate\n"
+            "• 📜 KHDA Certificate (available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1405,15 +1157,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🤖 *Robotics (Beginner/Inter/Adv) — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 7 years and above\n"
-            "⏱ Duration: Min 18 hours per level\n\n"
-            "Beginner / Intermediate / Advanced\n\n"
-            "Students work with micro:bit & Arduino, learning sensors, inputs, outputs, "
-            "programming & debugging to build functional robotic projects.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📌 Age Group: 7 years and above\n"
+            "⏳ Duration: Minimum of 18 hours per level (class frequency and duration vary depending on the season and batch)\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Robotics Course helps students understand the interaction between hardware and software through hands-on learning. Students work with microcontrollers like micro and Arduino, learn sensors, inputs, outputs, programming, and debugging techniques to build functional robotic projects while developing problem-solving and engineering skills.\n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "🎁 Course Includes\n"
+            "• 💻 Hands-on projects and activities\n"
+            "• 📚 Learning materials and practice exercises\n"
+            "• 🏅 Educatia Course Completion Certificate\n"
+            "• 📜 KHDA Certificate (available upon request)\n"
+            "💰 Course Fee: Approximately AED 1,000 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1424,15 +1180,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🤖 *Robotics (Beginner/Inter/Adv) — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 7 years and above\n"
-            "⏱ Duration: Min 18 hours per level\n\n"
-            "Beginner / Intermediate / Advanced\n\n"
-            "Students work with micro:bit & Arduino, learning sensors, inputs, outputs, "
-            "programming & debugging to build functional robotic projects.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
+            "📌 Age Group: 7 years and above\n"
+            "⏳ Duration: Minimum of 18 hours per level (class frequency and duration vary depending on the season and batch)\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Robotics Course helps students understand the interaction between hardware and software through hands-on learning. Students work with microcontrollers like micro and Arduino, learn sensors, inputs, outputs, programming, and debugging techniques to build functional robotic projects while developing problem-solving and engineering skills.\n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "🎁 Course Includes\n"
+            "• 💻 Hands-on projects and activities\n"
+            "• 📚 Learning materials and practice exercises\n"
+            "• 🏅 Educatia Course Completion Certificate\n"
+            "• 📜 KHDA Certificate (available upon request)\n"
+            "💰 Course Fee: Approximately AED 1,500 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1443,16 +1203,10 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🤖 *Robotics (Beginner/Inter/Adv) — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 7 years and above\n"
-            "⏱ Duration: Min 18 hours per level\n\n"
-            "Beginner / Intermediate / Advanced\n\n"
-            "Students work with micro:bit & Arduino, learning sensors, inputs, outputs, "
-            "programming & debugging to build functional robotic projects.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: ~AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Hands-on projects • Learning materials • Educatia Certificate • KHDA Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "📖 Course Description\n"
+            "Explore the exciting world of robotics through hands-on projects involving programming, electronics, sensors, and automation. Children develop creativity, engineering skills, teamwork, and problem-solving abilities while building and programming their own robotic projects.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -1462,14 +1216,20 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "✍️ *Handwriting is beautiful — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Develop neat, legible & confident handwriting through guided practice. "
-            "Focuses on letter formation, spacing, alignment, writing speed & presentation.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Practice Book • Worksheets • Feedback • Educatia Certificate\n\n"
+            "📌 Age Group: 6 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Handwriting Course is designed to help students develop neat, legible, and confident handwriting through guided practice and structured techniques. The program focuses on improving letter formation, spacing, alignment, writing speed, and overall presentation skills.\n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "💰 Course Fee: AED 1000 + VAT per level.\n"
+            "Registration Fee: AED 100 + VAT (one-time)\n\n"
+            "🎁 Course Takeaways\n"
+            "📚 Handwriting Practice Book & Learning Materials\n"
+            "✍️ Improved Letter Formation, Neatness, and Writing Style\n"
+            "📝 Regular Practice Worksheets and Guided Feedback\n"
+            "🚀 Enhanced Writing Speed, Spacing, and Presentation Skills\n"
+            "🏅 Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1480,14 +1240,20 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "✍️ *Handwriting is beautiful — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Develop neat, legible & confident handwriting through guided practice. "
-            "Focuses on letter formation, spacing, alignment, writing speed & presentation.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Practice Book • Worksheets • Feedback • Educatia Certificate\n\n"
+            "📌 Age Group: 6 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Handwriting Course is designed to help students develop neat, legible, and confident handwriting through guided practice and structured techniques. The program focuses on improving letter formation, spacing, alignment, writing speed, and overall presentation skills.\n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "🎁 Course Takeaways\n"
+            "📚 Handwriting Practice Book & Learning Materials\n"
+            "✍️ Improved Letter Formation, Neatness, and Writing Style\n"
+            "📝 Regular Practice Worksheets and Guided Feedback\n"
+            "🚀 Enhanced Writing Speed, Spacing, and Presentation Skills\n"
+            "🏅 Educatia Course Completion Certificate (KHDA Certificate available upon request)\n"
+            "💰 Course Fee: AED 1000 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1498,14 +1264,20 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "✍️ *Handwriting is beautiful — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Develop neat, legible & confident handwriting through guided practice. "
-            "Focuses on letter formation, spacing, alignment, writing speed & presentation.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Practice Book • Worksheets • Feedback • Educatia Certificate\n\n"
+            "📌 Age Group: 6 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Handwriting Course is designed to help students develop neat, legible, and confident handwriting through guided practice and structured techniques. The program focuses on improving letter formation, spacing, alignment, writing speed, and overall presentation skills.\n"
+            "📈 Levels: Multiple levels are available across all courses based on the child's age and prior knowledge, ensuring a progressive learning experience.\n"
+            "🎁 Course Takeaways\n"
+            "📚 Handwriting Practice Book & Learning Materials\n"
+            "✍️ Improved Letter Formation, Neatness, and Writing Style\n"
+            "📝 Regular Practice Worksheets and Guided Feedback\n"
+            "🚀 Enhanced Writing Speed, Spacing, and Presentation Skills\n"
+            "🏅 Educatia Course Completion Certificate (KHDA Certificate available upon request)\n"
+            "💰 Course Fee: AED 1000 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1534,9 +1306,8 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🎨 *Creative skills — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
-            "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
-            "ℹ️ Creative skills sessions are offered as part of our Summer & Winter Camps.\n\n"
+            "Our Art & Craft sessions are designed to encourage creativity, imagination, and self-expression through fun, hands-on activities. These sessions are offered as part of our Summer and Winter Camps and include exciting activities such as finger painting, paper craft, origami, canvas painting, and much more.\n"
+            "Children explore different art techniques while developing fine motor skills, creativity, and confidence in their artistic abilities.\n\n"
             "📞 Contact us for the next camp schedule:\n"
             "*+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
@@ -1548,9 +1319,8 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🎨 *Creative skills — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
-            "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
-            "ℹ️ Creative skills sessions are offered as part of our Summer & Winter Camps.\n\n"
+            "Our Art & Craft sessions are designed to encourage creativity, imagination, and self-expression through fun, hands-on activities. These sessions are offered as part of our Summer and Winter Camps and include exciting activities such as finger painting, paper craft, origami, canvas painting, and much more.\n"
+            "Children explore different art techniques while developing fine motor skills, creativity, and confidence in their artistic abilities.\n\n"
             "📞 Contact us for the next camp schedule:\n"
             "*+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
@@ -1562,9 +1332,8 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "🎨 *Creative skills — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "Art & Craft sessions designed to encourage creativity, imagination & self-expression.\n\n"
-            "Activities include: Finger painting • Paper craft • Origami • Canvas painting & more!\n\n"
-            "ℹ️ Creative skills sessions are offered as part of our Summer & Winter Camps.\n\n"
+            "Our Art & Craft sessions are designed to encourage creativity, imagination, and self-expression through fun, hands-on activities. These sessions are offered as part of our Summer and Winter Camps and include exciting activities such as finger painting, paper craft, origami, canvas painting, and much more.\n"
+            "Children explore different art techniques while developing fine motor skills, creativity, and confidence in their artistic abilities.\n\n"
             "📞 Contact us for the next camp schedule:\n"
             "*+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
@@ -1590,15 +1359,14 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "⚗️ *Live science experiments — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 10 years and above\n"
-            "⏱ Duration: Min 12 hours per level\n\n"
-            "Exciting hands-on experiments introducing children to the fascinating world of science. "
-            "Students explore scientific concepts by observing, experimenting & understanding "
-            "the 'why' behind everyday phenomena.\n\n"
-            "ℹ️ Also offered as complimentary enrichment for Academic Support Science students.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 500 + VAT per level\n\n"
+            "📌 Age Group: 10 years and above\n"
+            "⏳ Duration: Minimum of 12 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Live Science Experiments program introduces children to the fascinating world of science through exciting hands-on experiments and demonstrations. Students explore scientific concepts by observing, experimenting, and understanding the \"why\" behind everyday phenomena, making learning fun, interactive, and memorable.\n"
+            "These sessions are also offered as complimentary enrichment sessions for students enrolled in our Academic Support Science Classes, helping them strengthen their understanding of scientific concepts through practical learning.\n\n"
+            "💰 Course Fee: AED 500 + VAT per level.\n"
+            "Registration Fee: AED 100 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1609,15 +1377,14 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "⚗️ *Live science experiments — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 10 years and above\n"
-            "⏱ Duration: Min 12 hours per level\n\n"
-            "Exciting hands-on experiments introducing children to the fascinating world of science. "
-            "Students explore scientific concepts by observing, experimenting & understanding "
-            "the 'why' behind everyday phenomena.\n\n"
-            "ℹ️ Also offered as complimentary enrichment for Academic Support Science students.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: AED 600 + VAT per level\n\n"
+            "📌 Age Group: 10 years and above\n"
+            "⏳ Duration: Minimum of 12 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Live Science Experiments program introduces children to the fascinating world of science through exciting hands-on experiments and demonstrations. Students explore scientific concepts by observing, experimenting, and understanding the \"why\" behind everyday phenomena, making learning fun, interactive, and memorable.\n"
+            "These sessions are also offered as complimentary enrichment sessions for students enrolled in our Academic Support Science Classes, helping them strengthen their understanding of scientific concepts through practical learning.\n\n"
+            "💰 Course Fee: AED 600 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1666,15 +1433,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "💾 *MS Office (Beginner/Inter) — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 9 years and above\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Microsoft Word • PowerPoint • Excel\n\n"
-            "Students learn to create documents, presentations & spreadsheets. "
-            "Also includes introduction to AI tools for learning & creativity.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Practical Word/Excel/PowerPoint skills • Educatia Certificate • KHDA Certificate\n\n"
+            "📌 Age Group: 9 years and above\n"
+            "⏳ Duration: Minimum of 20 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our MS Office Course is designed to introduce children to essential digital productivity skills through practical learning. Students learn to create and format documents, prepare presentations, organize data, and use various tools in Microsoft Word, PowerPoint, and Excel. The course also introduces children to the use of AI tools for learning, creativity, and improving productivity, helping them understand how technology can support their academic and future needs.\n\n"
+            "🎁 Course Takeaways\n"
+            "• 🖥️ Practical knowledge of Microsoft Word, PowerPoint, and Excel\n"
+            "• 📝 Skills to create documents, presentations, and spreadsheets\n"
+            "• 📊 Basic data handling and formatting skills\n"
+            "• 🎨 Ability to design creative presentations and projects\n"
+            "• 🏅 Educatia Course Completion Certificate (KHDA certificate upon request)\n"
+            "💰 Course Fee: AED 1000 + VAT per level.\n"
+            "Registration Fee: AED 100 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1685,15 +1456,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "💾 *MS Office (Beginner/Inter) — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 9 years and above\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Microsoft Word • PowerPoint • Excel\n\n"
-            "Students learn to create documents, presentations & spreadsheets. "
-            "Also includes introduction to AI tools for learning & creativity.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Practical Word/Excel/PowerPoint skills • Educatia Certificate • KHDA Certificate\n\n"
+            "📌 Age Group: 9 years and above\n"
+            "⏳ Duration: Minimum of 20 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our MS Office Course is designed to introduce children to essential digital productivity skills through practical learning. Students learn to create and format documents, prepare presentations, organize data, and use various tools in Microsoft Word, PowerPoint, and Excel. The course also introduces children to the use of AI tools for learning, creativity, and improving productivity, helping them understand how technology can support their academic and future needs.\n\n"
+            "🎁 Course Takeaways\n"
+            "• 🖥️ Practical knowledge of Microsoft Word, PowerPoint, and Excel\n"
+            "• 📝 Skills to create documents, presentations, and spreadsheets\n"
+            "• 📊 Basic data handling and formatting skills\n"
+            "• 🎨 Ability to design creative presentations and projects\n"
+            "• 🏅 Educatia Course Completion Certificate (KHDA certificate upon request)\n"
+            "💰 Course Fee: AED 1000 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1704,15 +1479,19 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "💾 *MS Office (Beginner/Inter) — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 9 years and above\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Microsoft Word • PowerPoint • Excel\n\n"
-            "Students learn to create documents, presentations & spreadsheets. "
-            "Also includes introduction to AI tools for learning & creativity.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 100 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Practical Word/Excel/PowerPoint skills • Educatia Certificate • KHDA Certificate\n\n"
+            "📌 Age Group: 9 years and above\n"
+            "⏳ Duration: Minimum of 20 hours per level\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our MS Office Course is designed to introduce children to essential digital productivity skills through practical learning. Students learn to create and format documents, prepare presentations, organize data, and use various tools in Microsoft Word, PowerPoint, and Excel. The course also introduces children to the use of AI tools for learning, creativity, and improving productivity, helping them understand how technology can support their academic and future needs.\n\n"
+            "🎁 Course Takeaways\n"
+            "• 🖥️ Practical knowledge of Microsoft Word, PowerPoint, and Excel\n"
+            "• 📝 Skills to create documents, presentations, and spreadsheets\n"
+            "• 📊 Basic data handling and formatting skills\n"
+            "• 🎨 Ability to design creative presentations and projects\n"
+            "• 🏅 Educatia Course Completion Certificate (KHDA certificate upon request)\n"
+            "💰 Course Fee: AED 1500 + VAT per level.\n"
+            "Registration Fee: AED 150 + VAT (one-time)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1723,16 +1502,10 @@ def show_course_detail(to, course_id, branch, category):
         text = (
             "💾 *MS Office (Beginner/Inter) — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 9 years and above\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Microsoft Word • PowerPoint • Excel\n\n"
-            "Students learn to create documents, presentations & spreadsheets. "
-            "Also includes introduction to AI tools for learning & creativity.\n\n"
-            "💰 *Fees:*\n"
-            "• Registration Fee: AED 150 + VAT (one-time)\n"
-            "• Course Fee: AED 1,000 + VAT per level\n\n"
-            "📦 Includes: Practical Word/Excel/PowerPoint skills • Educatia Certificate • KHDA Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "📖 Course Description\n"
+            "Build essential digital skills by learning Microsoft Word, Excel, and PowerPoint through practical activities and projects. Children develop confidence in creating documents, organising information, preparing presentations, and using technology effectively for academic and future professional needs.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -1740,15 +1513,21 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_eng_beg" and branch == "ic":
         text = (
-            "🗣 *English communication — Beginner/Inter*\n"
+            "🗣 *English communication Beginner*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 5 years and above\n"
-            "⏱ Duration: Min 36 hours per level\n\n"
-            "Helps early learners build confidence in speaking, improve vocabulary "
-            "& develop clear sentence formation through age-appropriate activities.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 5 years and above\n"
+            "⏳ Duration: Minimum of 36 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Communication Skills for Kids Programme is designed for early\n"
+            "learners to develop strong foundational communication skills in English.\n"
+            "The programme helps children build confidence in speaking, improve\n"
+            "vocabulary, and develop clear sentence formation through structured, age"
+            "appropriate learning activities.\n"
+            "At the early stage, children are introduced to English in a simple,\n"
+            "engaging, and supportive environment that encourages them to express themselves naturally and confidently\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1757,15 +1536,21 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_eng_beg" and branch == "dso":
         text = (
-            "🗣 *English communication — Beginner/Inter*\n"
+            "🗣 *English communication Beginner*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 5 years and above\n"
-            "⏱ Duration: Min 36 hours per level\n\n"
-            "Helps early learners build confidence in speaking, improve vocabulary "
-            "& develop clear sentence formation through age-appropriate activities.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 5 years and above\n"
+            "⏳ Duration: Minimum of 36 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Communication Skills for Kids Programme is designed for early\n"
+            "learners to develop strong foundational communication skills in English.\n"
+            "The programme helps children build confidence in speaking, improve\n"
+            "vocabulary, and develop clear sentence formation through structured, age"
+            "appropriate learning activities.\n"
+            "At the early stage, children are introduced to English in a simple,\n"
+            "engaging, and supportive environment that encourages them to express themselves naturally and confidently\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1774,15 +1559,21 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_eng_beg" and branch == "jadaf":
         text = (
-            "🗣 *English communication — Beginner/Inter*\n"
+            "🗣 *English communication Beginner*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 5 years and above\n"
-            "⏱ Duration: Min 36 hours per level\n\n"
-            "Helps early learners build confidence in speaking, improve vocabulary "
-            "& develop clear sentence formation through age-appropriate activities.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 5 years and above\n"
+            "⏳ Duration: Minimum of 36 hours per level\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Communication Skills for Kids Programme is designed for early\n"
+            "learners to develop strong foundational communication skills in English.\n"
+            "The programme helps children build confidence in speaking, improve\n"
+            "vocabulary, and develop clear sentence formation through structured, age"
+            "appropriate learning activities.\n"
+            "At the early stage, children are introduced to English in a simple,\n"
+            "engaging, and supportive environment that encourages them to express themselves naturally and confidently\n"
+            "💰 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1791,16 +1582,12 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_eng_beg" and branch == "online":
         text = (
-            "🗣 *English communication — Beginner/Inter*\n"
+            "🗣 *English Communication (Beginner / Intermediate)*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 5 years and above\n"
-            "⏱ Duration: Min 36 hours per level\n\n"
-            "Helps early learners build confidence in speaking, improve vocabulary "
-            "& develop clear sentence formation through age-appropriate activities.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Develop children's confidence in speaking English through interactive activities focused on vocabulary, grammar, pronunciation, reading, writing, and everyday communication. The course helps learners express themselves clearly and improve their overall language skills.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -1808,15 +1595,21 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_eng_int" and branch == "ic":
         text = (
-            "🗣 *English Communication — Intermediate*\n"
+            "🗣 *English Communication Intermediate*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Builds on foundational English skills — speaking, vocabulary, sentence formation, "
-            "grammar & listening in a supportive and engaging environment.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 8 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Communication Skills for Kids Programme is designed for early\n"
+            "learners to develop strong foundational communication skills in English.\n"
+            "The programme helps children build confidence in speaking, improve\n"
+            "vocabulary, and develop clear sentence formation through structured, age"
+            "appropriate learning activities.\n"
+            "At the early stage, children are introduced to English in a simple,\n"
+            "engaging, and supportive environment that encourages them to express themselves naturally and confidently\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1825,15 +1618,21 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_eng_int" and branch == "dso":
         text = (
-            "🗣 *English Communication — Intermediate*\n"
+            "🗣 *English Communication Intermediate*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Builds on foundational English skills — speaking, vocabulary, sentence formation, "
-            "grammar & listening in a supportive and engaging environment.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 8 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Communication Skills for Kids Programme is designed for early\n"
+            "learners to develop strong foundational communication skills in English.\n"
+            "The programme helps children build confidence in speaking, improve\n"
+            "vocabulary, and develop clear sentence formation through structured, age"
+            "appropriate learning activities.\n"
+            "At the early stage, children are introduced to English in a simple,\n"
+            "engaging, and supportive environment that encourages them to express themselves naturally and confidently\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1842,15 +1641,21 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_eng_int" and branch == "jadaf":
         text = (
-            "🗣 *English Communication — Intermediate*\n"
+            "🗣 *English Communication Intermediate*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Builds on foundational English skills — speaking, vocabulary, sentence formation, "
-            "grammar & listening in a supportive and engaging environment.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 8 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Communication Skills for Kids Programme is designed for early\n"
+            "learners to develop strong foundational communication skills in English.\n"
+            "The programme helps children build confidence in speaking, improve\n"
+            "vocabulary, and develop clear sentence formation through structured, age"
+            "appropriate learning activities.\n"
+            "At the early stage, children are introduced to English in a simple,\n"
+            "engaging, and supportive environment that encourages them to express themselves naturally and confidently\n"
+            "💰 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1859,16 +1664,12 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_eng_int" and branch == "online":
         text = (
-            "🗣 *English Communication — Intermediate*\n"
+            "🗣 *English Communication (Beginner / Intermediate)*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Builds on foundational English skills — speaking, vocabulary, sentence formation, "
-            "grammar & listening in a supportive and engaging environment.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Develop children's confidence in speaking English through interactive activities focused on vocabulary, grammar, pronunciation, reading, writing, and everyday communication. The course helps learners express themselves clearly and improve their overall language skills.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -1876,14 +1677,14 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_phonics" and branch == "ic":
         text = (
-            "🔤 *Phonics Classes — International City*\n"
+            "🔤 *Phonics classes — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 5 years and above\n"
-            "⏱ Duration: Min 36 hours per level\n\n"
-            "Systematic sound-based learning — letter sounds, blending techniques, "
-            "word formation & reading strategies. Builds a strong foundation in English.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 5 years and above\n"
+            "⏳ Duration: Minimum of 36 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Phonics Classes are designed to help young learners develop strong reading, spelling, and pronunciation skills through systematic sound-based learning. Children learn letter sounds, blending techniques, word formation, and reading strategies in a fun and interactive way, building confidence and a strong foundation in English language skills.\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1892,14 +1693,14 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_phonics" and branch == "dso":
         text = (
-            "🔤 *Phonics Classes — Dubai Silicon Oasis*\n"
+            "🔤 *Phonics classes — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 5 years and above\n"
-            "⏱ Duration: Min 36 hours per level\n\n"
-            "Systematic sound-based learning — letter sounds, blending techniques, "
-            "word formation & reading strategies. Builds a strong foundation in English.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 5 years and above\n"
+            "⏳ Duration: Minimum of 36 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Phonics Classes are designed to help young learners develop strong reading, spelling, and pronunciation skills through systematic sound-based learning. Children learn letter sounds, blending techniques, word formation, and reading strategies in a fun and interactive way, building confidence and a strong foundation in English language skills.\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1908,14 +1709,14 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_phonics" and branch == "jadaf":
         text = (
-            "🔤 *Phonics Classes — Al Jadaf*\n"
+            "🔤 *Phonics classes — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 5 years and above\n"
-            "⏱ Duration: Min 36 hours per level\n\n"
-            "Systematic sound-based learning — letter sounds, blending techniques, "
-            "word formation & reading strategies. Builds a strong foundation in English.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 5 years and above\n"
+            "⏳ Duration: Minimum of 36 hours per level\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Phonics Classes are designed to help young learners develop strong reading, spelling, and pronunciation skills through systematic sound-based learning. Children learn letter sounds, blending techniques, word formation, and reading strategies in a fun and interactive way, building confidence and a strong foundation in English language skills.\n"
+            "💰 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1924,15 +1725,11 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_phonics" and branch == "online":
         text = (
-            "🔤 *Phonics Classes — Online*\n"
+            "🔤 *Phonics classes — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 5 years and above\n"
-            "⏱ Duration: Min 36 hours per level\n\n"
-            "Systematic sound-based learning — letter sounds, blending techniques, "
-            "word formation & reading strategies. Builds a strong foundation in English.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Build a strong foundation in reading and language skills through systematic phonics learning. Children develop letter-sound recognition, pronunciation, vocabulary, blending, spelling, and reading fluency through engaging activities, stories, and interactive practice. The course helps young learners become confident and independent readers.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -1943,12 +1740,12 @@ def show_course_detail(to, course_id, branch, category):
             "🎤 *Public speaking and Creative writing*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 years and above\n"
-            "⏱ Duration: Min 16 hours per level\n\n"
-            "Helps children express thoughts confidently & creatively through storytelling, "
-            "writing exercises & speaking practices. Develop communication, vocabulary & confidence.\n\n"
-            "💰 *Course Fee: AED 900 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 8 years and above\n"
+            "⏳ Duration: Minimum of 16 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Public Speaking and Creative Writing Classes are designed to help children express their thoughts confidently and creatively. Through engaging activities, storytelling, writing exercises, and speaking practices, students develop communication skills, imagination, vocabulary, and the confidence to present their ideas effectively.\n"
+            "💰 Course Fee: AED 900 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1960,12 +1757,12 @@ def show_course_detail(to, course_id, branch, category):
             "🎤 *Public speaking and Creative writing*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 years and above\n"
-            "⏱ Duration: Min 16 hours per level\n\n"
-            "Helps children express thoughts confidently & creatively through storytelling, "
-            "writing exercises & speaking practices. Develop communication, vocabulary & confidence.\n\n"
-            "💰 *Course Fee: AED 950 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 8 years and above\n"
+            "⏳ Duration: Minimum of 16 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Public Speaking and Creative Writing Classes are designed to help children express their thoughts confidently and creatively. Through engaging activities, storytelling, writing exercises, and speaking practices, students develop communication skills, imagination, vocabulary, and the confidence to present their ideas effectively.\n"
+            "💰 Course Fee: AED 950 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1977,12 +1774,12 @@ def show_course_detail(to, course_id, branch, category):
             "🎤 *Public speaking and Creative writing*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 years and above\n"
-            "⏱ Duration: Min 16 hours per level\n\n"
-            "Helps children express thoughts confidently & creatively through storytelling, "
-            "writing exercises & speaking practices. Develop communication, vocabulary & confidence.\n\n"
-            "💰 *Course Fee: AED 900 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 8 years and above\n"
+            "⏳ Duration: Minimum of 16 hours per level\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Public Speaking and Creative Writing Classes are designed to help children express their thoughts confidently and creatively. Through engaging activities, storytelling, writing exercises, and speaking practices, students develop communication skills, imagination, vocabulary, and the confidence to present their ideas effectively.\n"
+            "💰 Course Fee: AED 1270 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -1994,13 +1791,9 @@ def show_course_detail(to, course_id, branch, category):
             "🎤 *Public speaking and Creative writing*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 8 years and above\n"
-            "⏱ Duration: Min 16 hours per level\n\n"
-            "Helps children express thoughts confidently & creatively through storytelling, "
-            "writing exercises & speaking practices. Develop communication, vocabulary & confidence.\n\n"
-            "💰 *Course Fee: AED 950 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Enhance children's communication, confidence, and creativity through engaging activities in speech delivery, storytelling, presentations, vocabulary building, and creative writing. The course encourages children to express ideas effectively and develop strong communication skills.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -2008,14 +1801,14 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_arabic_rw" and branch == "ic":
         text = (
-            "🌙 *Arabic reading and writing skills — International City*\n"
+            "🌙 *Arabic Reading and Writing skills — International City*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Learn Arabic alphabets, correct pronunciation, reading techniques & writing skills. "
-            "Structured and practical lessons for school-going children.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 6 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Arabic Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the Arabic language. The course focuses on learning Arabic alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Arabic.\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2024,14 +1817,14 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_arabic_rw" and branch == "dso":
         text = (
-            "🌙 *Arabic reading and writing skills — Dubai Silicon Oasis*\n"
+            "🌙 *Arabic Reading and Writing skills — Dubai Silicon Oasis*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Learn Arabic alphabets, correct pronunciation, reading techniques & writing skills. "
-            "Structured and practical lessons for school-going children.\n\n"
-            "💰 *Course Fee: AED 1,270 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 6 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Arabic Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the Arabic language. The course focuses on learning Arabic alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Arabic.\n"
+            "💰 Course Fee: AED 1270 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2040,14 +1833,14 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_arabic_rw" and branch == "jadaf":
         text = (
-            "🌙 *Arabic reading and writing skills — Al Jadaf*\n"
+            "🌙 *Arabic Reading and Writing skills — Al Jadaf*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Learn Arabic alphabets, correct pronunciation, reading techniques & writing skills. "
-            "Structured and practical lessons for school-going children.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: 6 years and above\n"
+            "⏳ Duration: Minimum of 24 hours per level\n"
+            "📍 Location: Al Jadaf\n"
+            "📖 Course Description\n"
+            "Our Arabic Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the Arabic language. The course focuses on learning Arabic alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Arabic.\n"
+            "💰 Course Fee: AED 1270 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2056,16 +1849,132 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "lt_arabic_rw" and branch == "online":
         text = (
-            "🌙 *Arabic reading and writing skills — Online*\n"
+            "🌙 *Arabic Reading and Writing skills — Online*\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: 6 years and above\n"
-            "⏱ Duration: Min 24 hours per level\n\n"
-            "Learn Arabic alphabets, correct pronunciation, reading techniques & writing skills. "
-            "Structured and practical lessons for school-going children.\n\n"
-            "💰 *Course Fee: AED 1,270 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Build a strong foundation in Arabic reading and writing through structured lessons covering alphabets, vocabulary, sentence formation, pronunciation, and writing practice. The course helps children develop confidence in understanding and using Arabic effectively.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_hindi_rw" and branch == "ic":
+        text = (
+            "\U0001f4d6 *Hindi reading and writing skills \u2014 International City*\n"
+            "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n"
+            "\U0001f4cc Age Group: 6 years and above\n"
+            "\u23f3 Duration: Minimum of 24 hours per level\n"
+            "\U0001f4cd Location: International City\n"
+            "\U0001f4d6 Course Description\n"
+            "Our Hindi Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the Hindi language. The course focuses on learning Hindi alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Hindi.\n"
+            "\U0001f4b0 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n\n"
+            "\U0001f4de Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back \U0001f519"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_hindi_rw" and branch == "dso":
+        text = (
+            "\U0001f4d6 *Hindi reading and writing skills \u2014 Dubai Silicon Oasis*\n"
+            "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n"
+            "\U0001f4cc Age Group: 6 years and above\n"
+            "\u23f3 Duration: Minimum of 24 hours per level\n"
+            "\U0001f4cd Location: Dubai Silicon Oasis\n"
+            "\U0001f4d6 Course Description\n"
+            "Our Hindi Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the Hindi language. The course focuses on learning Hindi alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Hindi.\n"
+            "\U0001f4b0 Course Fee: AED 1270 + VAT per level (includes class fees, registration fees and material fees)\n\n"
+            "\U0001f4de Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back \U0001f519"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_hindi_rw" and branch == "jadaf":
+        text = (
+            "\U0001f4d6 *Hindi reading and writing skills \u2014 Al Jadaf*\n"
+            "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n"
+            "\U0001f4cc Age Group: 6 years and above\n"
+            "\u23f3 Duration: Minimum of 24 hours per level\n"
+            "\U0001f4cd Location: Al Jadaf\n"
+            "\U0001f4d6 Course Description\n"
+            "Our Hindi Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the Hindi language. The course focuses on learning Hindi alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Hindi.\n"
+            "\U0001f4b0 Course Fee: AED 1270 + VAT per level (includes class fees, registration fees and material fees)\n\n"
+            "\U0001f4de Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back \U0001f519"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_hindi_rw" and branch == "online":
+        text = (
+            "\U0001f4d6 *Hindi reading and writing skills \u2014 Online*\n"
+            "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n"
+            "Help children develop Hindi language skills through engaging lessons focused on alphabets, reading, writing, vocabulary, grammar, and sentence formation. The course builds confidence in communicating and understanding Hindi.\n\n"
+            "\U0001f4de For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
+            "Reply *menu* to go back \U0001f519"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_french_rw" and branch == "ic":
+        text = (
+            "\U0001f1eb\U0001f1f7 *French reading and writing skills \u2014 International City*\n"
+            "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n"
+            "\U0001f4cc Age Group: 6 years and above\n"
+            "\u23f3 Duration: Minimum of 24 hours per level\n"
+            "\U0001f4cd Location: International City\n"
+            "\U0001f4d6 Course Description\n"
+            "Our French Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the French language. The course focuses on learning French alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Frenchi.\n"
+            "\U0001f4b0 Course Fee: AED 1420 + VAT per level (includes class fees, registration fees and material fees)\n\n"
+            "\U0001f4de Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back \U0001f519"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_french_rw" and branch == "dso":
+        text = (
+            "\U0001f1eb\U0001f1f7 *French reading and writing skills \u2014 Dubai Silicon Oasis*\n"
+            "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n"
+            "\U0001f4cc Age Group: 6 years and above\n"
+            "\u23f3 Duration: Minimum of 24 hours per level\n"
+            "\U0001f4cd Location: Dubai Silicon Oasis\n"
+            "\U0001f4d6 Course Description\n"
+            "Our French Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the French language. The course focuses on learning French alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Frenchi.\n"
+            "\U0001f4b0 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n\n"
+            "\U0001f4de Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back \U0001f519"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_french_rw" and branch == "jadaf":
+        text = (
+            "\U0001f1eb\U0001f1f7 *French reading and writing skills \u2014 Al Jadaf*\n"
+            "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n"
+            "\U0001f4cc Age Group: 6 years and above\n"
+            "\u23f3 Duration: Minimum of 24 hours per level\n"
+            "\U0001f4cd Location: Al Jadaf\n"
+            "\U0001f4d6 Course Description\n"
+            "Our French Reading and Writing Skills Course is designed for school-going children and adults who wish to develop a strong foundation in the French language. The course focuses on learning French alphabets, correct pronunciation, reading techniques, and writing skills through structured and practical lessons, helping learners gain confidence in reading and writing Frenchi.\n"
+            "\U0001f4b0 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n\n"
+            "\U0001f4de Contact: *+971 50 460 5940*\n"
+            "Reply *menu* to go back \U0001f519"
+        )
+        send_text(to, text)
+        return
+
+    if course_id == "lt_french_rw" and branch == "online":
+        text = (
+            "\U0001f1eb\U0001f1f7 *French reading and writing skills \u2014 Online*\n"
+            "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n"
+            "Introduce children to the French language through interactive lessons covering alphabets, pronunciation, vocabulary, reading, writing, and basic communication skills. The course creates a strong foundation for learning French with confidence.\n\n"
+            "\U0001f4de For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
+            "Reply *menu* to go back \U0001f519"
         )
         send_text(to, text)
         return
@@ -2075,13 +1984,20 @@ def show_course_detail(to, course_id, branch, category):
             "🗣 *English communication Beginner/Elementary*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 36 hours per level (3 months)\n\n"
-            "Develop confidence, clarity, and fluency in spoken and written English. "
-            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: Minimum of 36 hours per level (3 months course)\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Communication Skills in English Programme is designed to help\n"
+            "learners develop confidence, clarity, and fluency in spoken and written\n"
+            "English. Through interactive activities, practical exercises, and guided\n"
+            "practice, students improve their vocabulary, pronunciation, sentence\n"
+            "structure, and overall communication ability.\n"
+            "The programme is structured across three progressive levels to support\n"
+            "learners at different stages, gradually building the skills needed for\n"
+            "effective academic, social, and professional communication\n\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2093,13 +2009,20 @@ def show_course_detail(to, course_id, branch, category):
             "🗣 *English communication Beginner/Elementary*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 36 hours per level (3 months)\n\n"
-            "Develop confidence, clarity, and fluency in spoken and written English. "
-            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
-            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: Minimum of 36 hours per level (3 months course)\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Communication Skills in English Programme is designed to help\n"
+            "learners develop confidence, clarity, and fluency in spoken and written\n"
+            "English. Through interactive activities, practical exercises, and guided\n"
+            "practice, students improve their vocabulary, pronunciation, sentence\n"
+            "structure, and overall communication ability.\n"
+            "The programme is structured across three progressive levels to support\n"
+            "learners at different stages, gradually building the skills needed for\n"
+            "effective academic, social, and professional communication\n\n"
+            "💰 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2111,13 +2034,11 @@ def show_course_detail(to, course_id, branch, category):
             "🗣 *English communication Beginner/Elementary*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 36 hours per level (3 months)\n\n"
-            "Develop confidence, clarity, and fluency in spoken and written English. "
-            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "Develop confidence and fluency in spoken and written English through interactive sessions focused on grammar, vocabulary, pronunciation, listening, reading, writing, and real-life communication. Suitable for learners looking to improve everyday, academic, or professional English skills.\n\n"
+            "💰 Course Fee: AED 150 + VAT per hour\n"
+            "One-Time Registration Fee: AED 150 + VAT\n"
+            "🎉 Special Discounts Available on bookings of 20+ sessions.\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2129,14 +2050,9 @@ def show_course_detail(to, course_id, branch, category):
             "🗣 *English communication Beginner/Elementary*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 36 hours per level (3 months)\n\n"
-            "Develop confidence, clarity, and fluency in spoken and written English. "
-            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
-            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Improve your English fluency and confidence through structured lessons focused on speaking, pronunciation, vocabulary, grammar, reading, writing, and real-life communication. The course is designed to help learners communicate effectively in personal, academic, and professional environments.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -2144,16 +2060,23 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "a_eng_adv" and branch == "ic":
         text = (
-            "🗣 *English communication PreInter/Inter/Upper/Advanced*\n"
+            "🗣 *English communication PreInter/Inter/Upper Inter/Advanced*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 24 hours per level (3 months)\n\n"
-            "Develop confidence, clarity, and fluency in spoken and written English. "
-            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: Minimum of 24 hours per level (3 months course)\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Communication Skills in English Programme is designed to help\n"
+            "learners develop confidence, clarity, and fluency in spoken and written\n"
+            "English. Through interactive activities, practical exercises, and guided\n"
+            "practice, students improve their vocabulary, pronunciation, sentence\n"
+            "structure, and overall communication ability.\n"
+            "The programme is structured across three progressive levels to support\n"
+            "learners at different stages, gradually building the skills needed for\n"
+            "effective academic, social, and professional communication\n\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2162,16 +2085,23 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "a_eng_adv" and branch == "dso":
         text = (
-            "🗣 *English communication PreInter/Inter/Upper/Advanced*\n"
+            "🗣 *English communication PreInter/Inter/Upper Inter/Advanced*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 24 hours per level (3 months)\n\n"
-            "Develop confidence, clarity, and fluency in spoken and written English. "
-            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
-            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: Minimum of 24 hours per level (3 months course)\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Communication Skills in English Programme is designed to help\n"
+            "learners develop confidence, clarity, and fluency in spoken and written\n"
+            "English. Through interactive activities, practical exercises, and guided\n"
+            "practice, students improve their vocabulary, pronunciation, sentence\n"
+            "structure, and overall communication ability.\n"
+            "The programme is structured across three progressive levels to support\n"
+            "learners at different stages, gradually building the skills needed for\n"
+            "effective academic, social, and professional communication\n\n"
+            "💰 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2180,16 +2110,14 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "a_eng_adv" and branch == "jadaf":
         text = (
-            "🗣 *English communication PreInter/Inter/Upper/Advanced*\n"
+            "🗣 *English communication PreInter/Inter/Upper Inter/Advanced*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 24 hours per level (3 months)\n\n"
-            "Develop confidence, clarity, and fluency in spoken and written English. "
-            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "Develop confidence and fluency in spoken and written English through interactive sessions focused on grammar, vocabulary, pronunciation, listening, reading, writing, and real-life communication. Suitable for learners looking to improve everyday, academic, or professional English skills.\n\n"
+            "💰 Course Fee: AED 150 + VAT per hour\n"
+            "One-Time Registration Fee: AED 150 + VAT\n"
+            "🎉 Special Discounts Available on bookings of 20+ sessions.\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2198,17 +2126,12 @@ def show_course_detail(to, course_id, branch, category):
 
     if course_id == "a_eng_adv" and branch == "online":
         text = (
-            "🗣 *English communication PreInter/Inter/Upper/Advanced*\n"
+            "🗣 *English communication Beginner/Intermediate/Advanced*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 24 hours per level (3 months)\n\n"
-            "Develop confidence, clarity, and fluency in spoken and written English. "
-            "Improve vocabulary, pronunciation, sentence structure & communication.\n\n"
-            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Improve your English fluency and confidence through structured lessons focused on speaking, pronunciation, vocabulary, grammar, reading, writing, and real-life communication. The course is designed to help learners communicate effectively in personal, academic, and professional environments.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -2219,13 +2142,23 @@ def show_course_detail(to, course_id, branch, category):
             "🌙 *Spoken Arabic Beginner/ Inter/Advanced*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Develop strong skills in reading, writing, speaking, and understanding Arabic. "
-            "Focuses on vocabulary, correct pronunciation, and practical communication.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: Minimum of 20 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Arabic Language Programme is designed to help learners develop\n"
+            "strong skills in reading, writing, speaking, and understanding Arabic.\n"
+            "Through structured lessons, interactive activities, and guided practice,\n"
+            "students gradually build confidence and fluency in the language.\n"
+            "The programme focuses on vocabulary development, correct\n"
+            "pronunciation, sentence formation, and practical communication skills.\n"
+            "Learners are exposed to real-life situations to help them use Arabic\n"
+            "effectively in everyday conversations.\n"
+            "Suitable for beginners and progressing learners, the course ensures a\n"
+            "step-by-step approach to mastering the language in a supportive and\n"
+            "engaging environment.\n\n"
+            "💰 Course Fee: AED 1220 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2237,13 +2170,23 @@ def show_course_detail(to, course_id, branch, category):
             "🌙 *Spoken Arabic Beginner/ Inter/Advanced*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Develop strong skills in reading, writing, speaking, and understanding Arabic. "
-            "Focuses on vocabulary, correct pronunciation, and practical communication.\n\n"
-            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: Minimum of 20 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Arabic Language Programme is designed to help learners develop\n"
+            "strong skills in reading, writing, speaking, and understanding Arabic.\n"
+            "Through structured lessons, interactive activities, and guided practice,\n"
+            "students gradually build confidence and fluency in the language.\n"
+            "The programme focuses on vocabulary development, correct\n"
+            "pronunciation, sentence formation, and practical communication skills.\n"
+            "Learners are exposed to real-life situations to help them use Arabic\n"
+            "effectively in everyday conversations.\n"
+            "Suitable for beginners and progressing learners, the course ensures a\n"
+            "step-by-step approach to mastering the language in a supportive and\n"
+            "engaging environment.\n\n"
+            "💰 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2255,13 +2198,11 @@ def show_course_detail(to, course_id, branch, category):
             "🌙 *Spoken Arabic Beginner/ Inter/Advanced*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Develop strong skills in reading, writing, speaking, and understanding Arabic. "
-            "Focuses on vocabulary, correct pronunciation, and practical communication.\n\n"
-            "💰 *Course Fee: AED 1,220 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "Learn to communicate confidently in Arabic through practical lessons covering speaking, listening, reading, writing, grammar, and vocabulary. The course is ideal for residents, professionals, and students who wish to use Arabic effectively in daily life, work, or social interactions.\n\n"
+            "💰 Course Fee: AED 150 + VAT per hour\n"
+            "One-Time Registration Fee: AED 150 + VAT\n"
+            "🎉 Special Discounts Available on bookings of 20+ sessions.\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2273,14 +2214,9 @@ def show_course_detail(to, course_id, branch, category):
             "🌙 *Spoken Arabic Beginner/ Inter/Advanced*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Develop strong skills in reading, writing, speaking, and understanding Arabic. "
-            "Focuses on vocabulary, correct pronunciation, and practical communication.\n\n"
-            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Learn Arabic confidently through practical sessions designed to develop speaking, listening, vocabulary, pronunciation, and everyday conversation skills. The course is suitable for beginners as well as learners who wish to improve their Arabic communication abilities for personal or professional use.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -2291,12 +2227,12 @@ def show_course_detail(to, course_id, branch, category):
             "🎓 *IELTS Academic/General*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: 20 hrs instructor-led + 10 hrs self-practice\n\n"
-            "Focused training in Listening, Reading, Writing, and Speaking skills, "
-            "along with exam strategies and practice tests for desired band score.\n\n"
-            "💰 *Course Fee: AED 1,420 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: 20 hours of instructor-led classes + 10 hours of guided self-practice, which can be completed either at the institute or at the student's convenient location.\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our IELTS Preparation Course is designed to help students and professionals achieve their desired band score in the IELTS General Training and Academic modules. The course provides focused training in Listening, Reading, Writing, and Speaking skills, along with exam strategies, practice tests, and personalized guidance to improve accuracy, confidence, and overall performance.\n\n"
+            "💰 Course Fee: AED 1420 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2308,12 +2244,12 @@ def show_course_detail(to, course_id, branch, category):
             "🎓 *IELTS Academic/General*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: 20 hrs instructor-led + 10 hrs self-practice\n\n"
-            "Focused training in Listening, Reading, Writing, and Speaking skills, "
-            "along with exam strategies and practice tests for desired band score.\n\n"
-            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: 20 hours of instructor-led classes + 10 hours of guided self-practice, which can be completed either at the institute or at the student's convenient location.\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our IELTS Preparation Course is designed to help students and professionals achieve their desired band score in the IELTS General Training and Academic modules. The course provides focused training in Listening, Reading, Writing, and Speaking skills, along with exam strategies, practice tests, and personalized guidance to improve accuracy, confidence, and overall performance.\n\n"
+            "💰 Course Fee: AED 1470 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2325,12 +2261,10 @@ def show_course_detail(to, course_id, branch, category):
             "🎓 *IELTS Academic/General*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: 20 hrs instructor-led + 10 hrs self-practice\n\n"
-            "Focused training in Listening, Reading, Writing, and Speaking skills, "
-            "along with exam strategies and practice tests for desired band score.\n\n"
-            "💰 *Course Fee: AED 1,420 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "Prepare for success in the IELTS examination with comprehensive training in Listening, Reading, Writing, and Speaking. The course includes expert guidance, exam strategies, practice tests, personalised feedback, and time-management techniques to help learners achieve their target band score.\n"
+            "💰 Course Fee: AED 150 + VAT per hour\n"
+            "One-Time Registration Fee: AED 150 + VAT\n"
+            "🎉 Special Discounts Available on bookings of 20+ sessions.\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2342,13 +2276,9 @@ def show_course_detail(to, course_id, branch, category):
             "🎓 *IELTS Academic/General*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: 20 hrs instructor-led + 10 hrs self-practice\n\n"
-            "Focused training in Listening, Reading, Writing, and Speaking skills, "
-            "along with exam strategies and practice tests for desired band score.\n\n"
-            "💰 *Course Fee: AED 1,470 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Prepare effectively for the IELTS examination with comprehensive training in Listening, Reading, Writing, and Speaking modules. The course includes exam strategies, practice sessions, personalised feedback, and guidance to help learners achieve their desired band score.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -2359,13 +2289,13 @@ def show_course_detail(to, course_id, branch, category):
             "📊 *Professional Excel Skills for Adults*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Enhance efficiency and confidence in using Microsoft Excel for workplace needs. "
-            "Covers essential to advanced tools, formulas, data management & reporting.\n\n"
-            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: Minimum of 20 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Professional Excel Skills Course is designed for adults who want to enhance their efficiency and confidence in using Microsoft Excel for workplace and professional needs. The course covers essential to advanced Excel tools, formulas, data management, and reporting techniques through practical, hands-on exercises.\n\n"
+            "💰 Course Fee: AED 1100 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2377,13 +2307,13 @@ def show_course_detail(to, course_id, branch, category):
             "📊 *Professional Excel Skills for Adults*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Enhance efficiency and confidence in using Microsoft Excel for workplace needs. "
-            "Covers essential to advanced tools, formulas, data management & reporting.\n\n"
-            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: Minimum of 20 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Professional Excel Skills Course is designed for adults who want to enhance their efficiency and confidence in using Microsoft Excel for workplace and professional needs. The course covers essential to advanced Excel tools, formulas, data management, and reporting techniques through practical, hands-on exercises.\n\n"
+            "💰 Course Fee: AED 1350 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2395,13 +2325,11 @@ def show_course_detail(to, course_id, branch, category):
             "📊 *Professional Excel Skills for Adults*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Enhance efficiency and confidence in using Microsoft Excel for workplace needs. "
-            "Covers essential to advanced tools, formulas, data management & reporting.\n\n"
-            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "Master Microsoft Excel from the fundamentals to advanced features used in the workplace. Learn formulas, functions, data analysis, charts, PivotTables, conditional formatting, data validation, and productivity tools to confidently manage and analyse data for business and professional use.\n\n"
+            "💰 Course Fee: AED 150 + VAT per hour\n"
+            "One-Time Registration Fee: AED 150 + VAT\n"
+            "🎉 Special Discounts Available on bookings of 20+ sessions.\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2413,14 +2341,9 @@ def show_course_detail(to, course_id, branch, category):
             "📊 *Professional Excel Skills for Adults*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: Min 20 hours per level\n\n"
-            "Enhance efficiency and confidence in using Microsoft Excel for workplace needs. "
-            "Covers essential to advanced tools, formulas, data management & reporting.\n\n"
-            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Master Microsoft Excel skills required for modern workplaces, from basic functions to advanced data management techniques. Learn formulas, functions, charts, PivotTables, data analysis, and productivity tools to improve efficiency and confidence in handling professional tasks.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -2431,13 +2354,13 @@ def show_course_detail(to, course_id, branch, category):
             "💻 *Python coding Language*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: 20 hours per level\n\n"
-            "Learn Python fundamentals, problem-solving, data handling, and app development. "
-            "Build confidence in coding and explore automation & data analysis.\n\n"
-            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: 20 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Python Coding Course for Adults is designed to introduce learners to programming concepts and practical coding skills. Students learn Python fundamentals, problem-solving techniques, data handling, and application development through hands-on exercises and real-world examples. The course helps learners build confidence in coding and explore opportunities in automation, data analysis, and technology-driven fields.\n\n"
+            "💰 Course Fee: AED 1100 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2449,13 +2372,13 @@ def show_course_detail(to, course_id, branch, category):
             "💻 *Python coding Language*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: 20 hours per level\n\n"
-            "Learn Python fundamentals, problem-solving, data handling, and app development. "
-            "Build confidence in coding and explore automation & data analysis.\n\n"
-            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "📌 Age Group: All ages\n"
+            "⏳ Duration: 20 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Python Coding Course for Adults is designed to introduce learners to programming concepts and practical coding skills. Students learn Python fundamentals, problem-solving techniques, data handling, and application development through hands-on exercises and real-world examples. The course helps learners build confidence in coding and explore opportunities in automation, data analysis, and technology-driven fields.\n\n"
+            "💰 Course Fee: AED 1350 + VAT per level (includes class fees, registration fees and material fees)\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2467,13 +2390,11 @@ def show_course_detail(to, course_id, branch, category):
             "💻 *Python coding Language*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: 20 hours per level\n\n"
-            "Learn Python fundamentals, problem-solving, data handling, and app development. "
-            "Build confidence in coding and explore automation & data analysis.\n\n"
-            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
+            "Build a strong foundation in Python programming through hands-on projects and practical coding exercises. Learn programming concepts such as variables, loops, functions, data structures, file handling, and problem-solving techniques while developing applications and automation skills.\n\n"
+            "💰 Course Fee: AED 150 + VAT per hour\n"
+            "One-Time Registration Fee: AED 150 + VAT\n"
+            "🎉 Special Discounts Available on bookings of 20+ sessions.\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2485,14 +2406,9 @@ def show_course_detail(to, course_id, branch, category):
             "💻 *Python coding Language*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "👦👧 Age Group: All ages\n"
-            "⏱ Duration: 20 hours per level\n\n"
-            "Learn Python fundamentals, problem-solving, data handling, and app development. "
-            "Build confidence in coding and explore automation & data analysis.\n\n"
-            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n"
-            "🎓 *Certifications:* Educatia Course Completion Certificate\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Learn Python programming through practical, hands-on training designed for beginners and professionals. Develop skills in programming logic, problem-solving, automation, data handling, and application development through real-world coding exercises and projects.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -2503,11 +2419,18 @@ def show_course_detail(to, course_id, branch, category):
             "💼 *Get Ready To Work (MS Office + AI training)*\n"
             "📍 International City\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "⏱ Duration: 20 hours per level\n\n"
-            "Equip yourself with essential computer and digital skills for the workplace. "
-            "Gain experience in MS Office tools, AI apps, email, and digital skills.\n\n"
-            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "⏳ Duration: 20 hours per level\n"
+            "📍 Location: International City\n"
+            "📖 Course Description\n"
+            "Our Get Ready to Work Programme is designed to equip learners with\n"
+            "essential computer and digital skills required in today's professional\n"
+            "environment. The course focuses on practical, hands-on training that\n"
+            "helps students become confident in using workplace tools, improving\n"
+            "productivity, and adapting to modern, technology-driven jobs.\n"
+            "Through structured sessions, learners gain experience in Microsoft Office\n"
+            "tools, AI applications, email communication, and essential digital skills\n"
+            "needed in offices and professional settings.\n"
+            "💰 Course Fee: AED 1100 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2519,11 +2442,18 @@ def show_course_detail(to, course_id, branch, category):
             "💼 *Get Ready To Work (MS Office + AI training)*\n"
             "📍 Dubai Silicon Oasis\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "⏱ Duration: 20 hours per level\n\n"
-            "Equip yourself with essential computer and digital skills for the workplace. "
-            "Gain experience in MS Office tools, AI apps, email, and digital skills.\n\n"
-            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "⏳ Duration: 20 hours per level\n"
+            "📍 Location: Dubai Silicon Oasis\n"
+            "📖 Course Description\n"
+            "Our Get Ready to Work Programme is designed to equip learners with\n"
+            "essential computer and digital skills required in today's professional\n"
+            "environment. The course focuses on practical, hands-on training that\n"
+            "helps students become confident in using workplace tools, improving\n"
+            "productivity, and adapting to modern, technology-driven jobs.\n"
+            "Through structured sessions, learners gain experience in Microsoft Office\n"
+            "tools, AI applications, email communication, and essential digital skills\n"
+            "needed in offices and professional settings.\n"
+            "💰 Course Fee: AED 1350 + VAT per level (includes class fees, registration fees and material fees)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2535,11 +2465,11 @@ def show_course_detail(to, course_id, branch, category):
             "💼 *Get Ready To Work (MS Office + AI training)*\n"
             "📍 Al Jadaf\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "⏱ Duration: 20 hours per level\n\n"
-            "Equip yourself with essential computer and digital skills for the workplace. "
-            "Gain experience in MS Office tools, AI apps, email, and digital skills.\n\n"
-            "💰 *Course Fee: AED 1,100 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
+            "Equip yourself with essential workplace skills through comprehensive training in Microsoft Word, Excel, PowerPoint, Outlook, and modern AI tools. Learn document creation, spreadsheets, presentations, email management, AI-powered productivity, prompt writing, and digital workplace best practices to become job-ready for today's professional environment.\n"
+            "💰 Course Fee: AED 150 + VAT per hour\n"
+            "One-Time Registration Fee: AED 150 + VAT\n"
+            "🎉 Special Discounts Available on bookings of 20+ sessions.\n"
+            "Certifications : Educatia Course Completion Certificate (KHDA Certificate available upon request)\n\n"
             "📞 Contact: *+971 50 460 5940*\n"
             "Reply *menu* to go back 🔙"
         )
@@ -2551,12 +2481,9 @@ def show_course_detail(to, course_id, branch, category):
             "💼 *Get Ready To Work (MS Office + AI training)*\n"
             "🌐 Online Classes\n"
             "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-            "⏱ Duration: 20 hours per level\n\n"
-            "Equip yourself with essential computer and digital skills for the workplace. "
-            "Gain experience in MS Office tools, AI apps, email, and digital skills.\n\n"
-            "💰 *Course Fee: AED 1,350 + VAT per level*\n"
-            "(Includes class fees, registration & material fees)\n\n"
-            "📞 Contact: *+971 50 460 5940*\n"
+            "Develop essential workplace skills through practical training in Microsoft Office applications and modern AI tools. Learn document creation, spreadsheets, presentations, professional communication, AI-powered productivity tools, and digital skills required to succeed in today's workplace.\n\n"
+            "📞 For course charges and enrolment details, kindly contact our Admissions Team:\n"
+            "*+971 50 460 5940 / +971 52 870 5940*\n\n"
             "Reply *menu* to go back 🔙"
         )
         send_text(to, text)
@@ -2806,21 +2733,6 @@ def handle_number_input(from_number, num, session):
     category = session.get("category", "")
     branch = session.get("branch", "")
 
-    # ── Branch selection (3 branches: Summer/STEM) ──
-    if step == "select_branch" and category in ("summer_camp", "stem_camp"):
-        b = BRANCH_MAP_3.get(num)
-        if b:
-            if category == "summer_camp":
-                show_summer_camp(from_number, b)
-            else:
-                set_session(from_number, {
-                    "step": "select_age",
-                    "category": "stem_camp",
-                    "branch": b,
-                })
-                show_stem_age_selection(from_number, b)
-            return True
-
     # ── Branch selection (4 branches: Academic/Adult/new categories) ──
     if step == "select_branch" and category in ("academic", "adult", "academic_support", "child_skill", "language"):
         b = BRANCH_MAP_4.get(num)
@@ -2841,15 +2753,6 @@ def handle_number_input(from_number, num, session):
                     "branch": b,
                 })
                 show_adult_courses(from_number, b)
-            return True
-
-    # ── STEM age group selection ──
-    if step == "select_age" and category == "stem_camp":
-        if num == "1":
-            show_stem_junior(from_number, branch)
-            return True
-        if num == "2":
-            show_stem_teen(from_number, branch)
             return True
 
     # ── Course selection (numbered list) ──
@@ -2922,12 +2825,6 @@ def handle_message(from_number, msg_text=None, interactive_id=None):
             return
 
     # ── Keyword shortcuts ──
-    if "summer" in msg and "camp" in msg:
-        show_branch_buttons(from_number, "summer_camp")
-        return
-    if "stem" in msg:
-        show_branch_buttons(from_number, "stem_camp")
-        return
     if "academ" in msg or "children" in msg or "kids" in msg or "child" in msg:
         show_branch_list(from_number, "academic")
         return
@@ -2960,11 +2857,8 @@ def handle_message(from_number, msg_text=None, interactive_id=None):
     if "math" in msg or "science" in msg:
         send_text(from_number, "📚 We offer Mathematics & Science courses for children!\n\nReply *3* to see children's courses by branch.")
         return
-    if "robot" in msg:
-        show_branch_buttons(from_number, "stem_camp")
-        return
-    if "python" in msg or "coding" in msg:
-        show_branch_buttons(from_number, "stem_camp")
+    if "robot" in msg or "python" in msg or "coding" in msg:
+        show_branch_list(from_number, "child_skill")
         return
     if "excel" in msg or "office" in msg or "word" in msg:
         send_text(from_number, "📚 We offer MS Office / Excel / Word courses!\n\nReply *3* for kids or *4* for adults to see courses by branch.")
@@ -3013,29 +2907,13 @@ def handle_interactive(from_number, item_id, session):
     if item_id == "cat_other":
         show_other(from_number)
         return
-    # Legacy summer/stem camp support
-    if item_id == "cat_summer":
-        show_branch_buttons(from_number, "summer_camp")
-        return
-    if item_id == "cat_stem":
-        show_branch_buttons(from_number, "stem_camp")
-        return
 
     # ── Branch selections ──
     if item_id.startswith("branch_"):
         branch = item_id.replace("branch_", "")
         category = session.get("category", "")
 
-        if category == "summer_camp":
-            show_summer_camp(from_number, branch)
-        elif category == "stem_camp":
-            set_session(from_number, {
-                "step": "select_age",
-                "category": "stem_camp",
-                "branch": branch,
-            })
-            show_stem_age_selection(from_number, branch)
-        elif category in ("academic_support", "child_skill", "language"):
+        if category in ("academic_support", "child_skill", "language"):
             show_category_courses(from_number, branch, category)
         elif category == "adult":
             set_session(from_number, {
@@ -3046,16 +2924,6 @@ def handle_interactive(from_number, item_id, session):
             show_adult_courses(from_number, branch)
         else:
             show_main_menu(from_number)
-        return
-
-    # ── STEM age group selections ──
-    if item_id == "age_8_11":
-        branch = session.get("branch", "ic")
-        show_stem_junior(from_number, branch)
-        return
-    if item_id == "age_12_17":
-        branch = session.get("branch", "ic")
-        show_stem_teen(from_number, branch)
         return
 
     # ── Course selections ──
