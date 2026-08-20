@@ -6,8 +6,32 @@ import logging
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import threading
+import time
 
 app = Flask(__name__)
+
+# =============================================
+# KEEP ALIVE MECHANISM (For Render Free Tier)
+# =============================================
+
+def keep_alive_ping():
+    """Pings the web service every 14 minutes to prevent Render from spinning it down."""
+    # Render automatically sets RENDER_EXTERNAL_URL
+    url = os.environ.get("RENDER_EXTERNAL_URL")
+    if not url:
+        return
+    
+    while True:
+        try:
+            time.sleep(14 * 60) # 14 minutes
+            requests.get(url, timeout=10)
+            logging.info(f"Keep-alive ping sent to {url}")
+        except Exception as e:
+            logging.error(f"Keep-alive ping failed: {e}")
+
+# Start the background thread
+threading.Thread(target=keep_alive_ping, daemon=True).start()
 
 # =============================================
 # CONFIGURATION (env vars for Railway deploy)
