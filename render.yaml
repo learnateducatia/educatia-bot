@@ -2,8 +2,11 @@ services:
   - type: web
     name: educatia-bot
     env: python
+    plan: free
+    region: frankfurt
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --preload
+    healthCheckPath: /health
     envVars:
       - key: WHATSAPP_ACCESS_TOKEN
         sync: false
